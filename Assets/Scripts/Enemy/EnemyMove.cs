@@ -8,13 +8,14 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     public Transform target;
-    public NavMeshAgent agent;
+    Vector2 Target;
     Rigidbody2D rig;
     Animator aim;
     public float RunDistance = 30f;
     public float teleTime;
     public bool isTele;
-
+    public float speed;
+    CapsuleCollider2D cap;
     private bool isFlip = false;
     private Vector2 initialPosition;
     private float _teleTime;
@@ -22,11 +23,11 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+        
         rig = GetComponent<Rigidbody2D>();
         aim = GetComponent<Animator>();
         initialPosition = transform.position;
+        cap = GetComponent<CapsuleCollider2D>();
         
     }
 
@@ -43,17 +44,17 @@ public class EnemyMove : MonoBehaviour
 
         var distance = Vector2.Distance(initialPosition,
                             target.position);
-        if (distance < RunDistance)
+        if (distance < RunDistance && cap.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             _teleTime = teleTime;
             aim.SetBool("Run", true);
             isTele = false;
+            
         }
         else
         {
             isTele = true;
             aim.SetBool("Run", false);
-            agent.SetDestination(initialPosition);
             Tele();
         }
     }
@@ -71,10 +72,7 @@ public class EnemyMove : MonoBehaviour
         }
     }
     
-    public void Run()
-    {
-        agent.SetDestination(target.position);
-    }
+    
     void Flip()
     {
         Vector3 flipped = transform.localScale;
