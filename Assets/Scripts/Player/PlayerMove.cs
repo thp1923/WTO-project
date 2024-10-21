@@ -62,12 +62,14 @@ public class PlayerMove : MonoBehaviour
             speed += dashBoots;
             _dashTime = dashTime;
             isDashing = true;
+            GetComponent<PlayerTakeDamge>().enabled = false;
         }
 
         if (_dashTime <= 0 && isDashing == true)
         {
             speed -= dashBoots;
             isDashing = false;
+            GetComponent<PlayerTakeDamge>().enabled = true;
         }
 
         else

@@ -86,7 +86,10 @@ public class EnemyMove : MonoBehaviour
             _teleTime -= Time.deltaTime;
         }
     }
-    
+    public void FlipAttack()
+    {
+        FindObjectOfType<PlayerTakeDamge>().FlipTakeDamge(isFlip);
+    }
     
      public void Flip()
     {
