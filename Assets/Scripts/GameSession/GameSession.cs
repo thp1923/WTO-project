@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
     public int playerlivesMax = 1000;
     public int playerlives;
+
+    public Slider liveSlider;
     // Start is called before the first frame update
     void Start()
     {
         playerlives = playerlivesMax;
+        liveSlider.maxValue = playerlivesMax;
+        liveSlider.value = playerlivesMax;
     }
     private void Awake()
     {
@@ -38,7 +43,7 @@ public class GameSession : MonoBehaviour
     {
 
         playerlives -= damgeEnemy;//giam mang
-        
+        liveSlider.value = playerlives;
         if (playerlives <= 0)
         {
             PlayerDeath();

@@ -8,6 +8,7 @@ public class PlayerTakeDamge : MonoBehaviour
     Rigidbody2D rb;
 
     public bool isDeath;
+    public GameObject Hit;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerTakeDamge : MonoBehaviour
     }
     public void TakeDamge(int damge)
     {
+        Instantiate(Hit, rb.position, transform.rotation);
         FindObjectOfType<GameSession>().TakeLife(damge);
     }
     public void Death()

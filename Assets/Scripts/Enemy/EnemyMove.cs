@@ -4,6 +4,7 @@ using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class EnemyMove : MonoBehaviour
     public float teleTime;
     public bool isTele;
     public float speed;
-    CapsuleCollider2D cap;
+    public BoxCollider2D box;
     private bool isFlip = false;
     private Vector2 initialPosition;
     private float _teleTime;
+
+    bool haveGround;
     
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,7 @@ public class EnemyMove : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         aim = GetComponent<Animator>();
         initialPosition = transform.position;
-        cap = GetComponent<CapsuleCollider2D>();
+        
         
     }
 
@@ -35,9 +38,17 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         CheckRun();
-        Flip();
+        
         Debug.DrawRay(initialPosition, Vector2.right * RunDistance, Color.green);
         Debug.DrawRay(initialPosition, Vector2.left * RunDistance, Color.green);
+        if (!box.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            haveGround = false;
+        }
+        else
+        {
+            haveGround = true;
+        }
     }
     void CheckRun()
     {
@@ -48,7 +59,7 @@ public class EnemyMove : MonoBehaviour
         }
         var distance = Vector2.Distance(initialPosition,
                             target.position);
-        if (distance < RunDistance && cap.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (distance < RunDistance && haveGround == true)
         {
             _teleTime = teleTime;
             aim.SetBool("Run", true);
@@ -77,7 +88,7 @@ public class EnemyMove : MonoBehaviour
     }
     
     
-    void Flip()
+     public void Flip()
     {
         Vector3 flipped = transform.localScale;
         flipped.z *= -1f;
