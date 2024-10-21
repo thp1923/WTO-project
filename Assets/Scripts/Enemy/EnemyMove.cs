@@ -41,7 +41,11 @@ public class EnemyMove : MonoBehaviour
     }
     void CheckRun()
     {
-
+        if (FindObjectOfType<PlayerTakeDamge>().isDeath == true)
+        {
+            aim.SetBool("Run", false);
+            return;
+        }
         var distance = Vector2.Distance(initialPosition,
                             target.position);
         if (distance < RunDistance && cap.IsTouchingLayers(LayerMask.GetMask("Ground")))
