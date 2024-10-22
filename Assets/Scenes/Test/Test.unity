@@ -574,9 +574,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_Mass: 0.2
+  m_LinearDrag: 0.2
+  m_AngularDrag: 0.2
   m_GravityScale: 7
   m_Material: {fileID: 6200000, guid: 5c1c90a816a18ee448030d2aac1be4a0, type: 2}
   m_IncludeLayers:
@@ -769,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f268400df457243aa00b7bfe3addbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 1000
   Hit: {fileID: 3673831846674474035, guid: baed6dc4cab5b674c95af4fa012c843e, type: 3}
   Def: 30
   damPopUp: {fileID: 7899060316227608625, guid: 2f59c77cc32807548bbaee19e8dc03b4, type: 3}
@@ -1096,14 +1096,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.13231826, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1947657679, guid: a608b428982f6c04e8014e5b7db2d5dc, type: 3}
+  m_Sprite: {fileID: 1235423587, guid: d79baa9e8772b5444a38f90ec8a5d201, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.7
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000475801def73826a9bb30791a
