@@ -8,6 +8,9 @@ public class GameSession : MonoBehaviour
     public int playerlivesMax = 1000;
     public int playerlives;
 
+    public int BaseDamge;
+    public int Def;
+
     public Slider liveSlider;
     // Start is called before the first frame update
     void Start()

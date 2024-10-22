@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerTakeDamge : MonoBehaviour
@@ -9,8 +10,10 @@ public class PlayerTakeDamge : MonoBehaviour
 
     public bool isDeath;
     public GameObject Hit;
+    public int Def;
 
     public bool NoTakeDamge;
+    public GameObject damPopUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +24,22 @@ public class PlayerTakeDamge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Def = FindObjectOfType<GameSession>().Def;
     }
-    public void TakeDamge(int damge, float knockBack, float knockBackUp)
+    public void TakeDamge(int damge, float SkillDamge, float knockBack, float knockBackUp)
     {
         if (isDeath == false)
         {
+            int HPlost = (int)(damge+(SkillDamge/Def)*3);
             Instantiate(Hit, rb.position, transform.rotation);
-            FindObjectOfType<GameSession>().TakeLife(damge);
+            FindObjectOfType<GameSession>().TakeLife(HPlost);
             rb.AddForce(transform.up * knockBackUp, ForceMode2D.Impulse);
+            GameObject instance = Instantiate(damPopUp, transform.position
+            + new Vector3(UnityEngine.Random.Range(-0.7f, 0.7f), 0.5f, 0), Quaternion.identity);
+            instance.GetComponentInChildren<TextMeshProUGUI>().text = HPlost.ToString();
+            Animator aim = instance.GetComponentInChildren<Animator>();
             animator.SetTrigger("Hit");
+
             if (transform.localScale.x < 0)
             {
 

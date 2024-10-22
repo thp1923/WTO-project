@@ -1,20 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyTakeDamge : MonoBehaviour
 {
     public int maxHp;
     int HP;
     public GameObject Hit;
-    Animator animator;
+    Animator aim;
     Rigidbody2D rig;
+
+    public int Def;
+
+    public GameObject damPopUp;
+    public Slider liveSlider;
     // Start is called before the first frame update
     void Start()
     {
         HP = maxHp;
-        animator = GetComponent<Animator>();
+        aim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
+        liveSlider.maxValue = maxHp;
+        liveSlider.value = maxHp;
     }
 
     // Update is called once per frame
@@ -22,14 +31,20 @@ public class EnemyTakeDamge : MonoBehaviour
     {
         
     }
-    public void TakeDamge(int Damge)
+    public void TakeDamge(int Base, float SkillDamge)
     {
-        HP -= Damge;
-        animator.SetTrigger("Hit");
+        int HPlost = (int)(Base +(SkillDamge/Def)*3);
+        HP -= HPlost;
+        aim.SetTrigger("Hit");
+        GameObject instance = Instantiate(damPopUp, transform.position
+            + new Vector3(UnityEngine.Random.Range(-0.7f, 0.7f), 0.5f, 0), Quaternion.identity);
+        instance.GetComponentInChildren<TextMeshProUGUI>().text = HPlost.ToString();
+        Animator animator = instance.GetComponentInChildren<Animator>();
         Instantiate(Hit, rig.position, transform.rotation);
+        liveSlider.value = HP;
         if (HP <= 0)
         {
-            animator.SetBool("Death", true);
+            aim.SetBool("Death", true);
             rig.gravityScale = 0;
             GetComponent<EnemyMove>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;

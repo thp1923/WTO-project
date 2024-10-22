@@ -14,10 +14,14 @@ public class EnemyAttack : MonoBehaviour
     public Transform AttackPoint;
     public LayerMask playerLayer;
 
+    public float AttackDamge1;
+
     public float knockBack = 5f;
     public float knockBackUp = 1f;
 
     public float attackRange;
+
+    float Damge;
     void Start()
     {
         aim = GetComponent<Animator>();
@@ -47,13 +51,19 @@ public class EnemyAttack : MonoBehaviour
             return;
         }
     }
+
     public void Attack1()
+    {
+        Damge = BaseAttack * AttackDamge1;
+        Attack();
+    }
+    public void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, playerLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
             FindObjectOfType<EnemyMove>().FlipAttack();
-            enemy.GetComponent<PlayerTakeDamge>().TakeDamge(BaseAttack, knockBack, knockBackUp);
+            enemy.GetComponent<PlayerTakeDamge>().TakeDamge(BaseAttack, Damge, knockBack, knockBackUp);
 
 
         }

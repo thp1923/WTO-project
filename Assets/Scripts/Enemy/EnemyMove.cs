@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class EnemyMove : MonoBehaviour
 {
@@ -20,6 +15,8 @@ public class EnemyMove : MonoBehaviour
     private bool isFlip = false;
     private Vector2 initialPosition;
     private float _teleTime;
+
+    public Slider liveSlider;
 
     bool haveGround;
     
@@ -101,14 +98,14 @@ public class EnemyMove : MonoBehaviour
             transform.localScale = flipped;
             transform.Rotate(0f, 180f, 0f);
             isFlip = false;
-            
+            liveSlider.direction = Slider.Direction.LeftToRight;
         }
         else if (transform.position.x < target.position.x && !isFlip)
         {
             transform.localScale = flipped;
             transform.Rotate(0f, 180f, 0f);
             isFlip = true;
-            
+            liveSlider.direction = Slider.Direction.RightToLeft;
         }
     }
 }

@@ -80,7 +80,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.13333334
-    functionName: NormalAttck1
+    functionName: Normal2
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

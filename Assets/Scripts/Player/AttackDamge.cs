@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AttackDamge : MonoBehaviour
 {
-    public int BaseAttack;
+    int BaseAttack;
     public Vector2 AttackRange;
     public Transform AttackPoint;
     public LayerMask enemyLayer;
 
-    public int DamgeNormal1;
-    public int DamgeNormal2;
-    public int DamgeNormal3;
+    public float DamgeNormal1;
+    public float DamgeNormal2;
+    public float DamgeNormal3;
+
+    float Damge;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +23,29 @@ public class AttackDamge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        BaseAttack = FindObjectOfType<GameSession>().BaseDamge;
     }
-    public void NormalAttck1()
+    public void Normal1()
+    {
+        Damge = BaseAttack * DamgeNormal1;
+        Attack();
+    }
+    public void Normal2()
+    {
+        Damge = BaseAttack * DamgeNormal2;
+        Attack();
+    }
+    public void Normal3()
+    {
+        Damge = BaseAttack * DamgeNormal3;
+        Attack();
+    }
+    public void Attack()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<EnemyTakeDamge>().TakeDamge(BaseAttack);
+            enemy.GetComponent<EnemyTakeDamge>().TakeDamge(BaseAttack, Damge);
             CameraShake.Instance.ShakeCamera(5f, 0.1f);
 
         }
