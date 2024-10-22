@@ -29,7 +29,7 @@ public class AttackDamge : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<EnemyTakeDamge>().TakeDamge(BaseAttack);
-
+            CameraShake.Instance.ShakeCamera(5f, 0.1f);
 
         }
     }
