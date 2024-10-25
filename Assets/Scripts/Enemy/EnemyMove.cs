@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    public Transform target;
+    Transform target;
     Vector2 Target;
     Rigidbody2D rig;
     Animator aim;
@@ -14,6 +14,7 @@ public class EnemyMove : MonoBehaviour
     public BoxCollider2D box;
     private bool isFlip = false;
     private Vector2 initialPosition;
+
     private float _teleTime;
 
     public Slider liveSlider;
@@ -27,8 +28,8 @@ public class EnemyMove : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         aim = GetComponent<Animator>();
         initialPosition = transform.position;
-        
-        
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     // Update is called once per frame
@@ -36,8 +37,8 @@ public class EnemyMove : MonoBehaviour
     {
         CheckRun();
         
-        Debug.DrawRay(initialPosition, Vector2.right * RunDistance, Color.green);
-        Debug.DrawRay(initialPosition, Vector2.left * RunDistance, Color.green);
+        Debug.DrawRay(transform.position, Vector2.right * RunDistance, Color.green);
+        Debug.DrawRay(transform.position, Vector2.left * RunDistance, Color.green);
         if (!box.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             haveGround = false;
@@ -54,7 +55,7 @@ public class EnemyMove : MonoBehaviour
             aim.SetBool("Run", false);
             return;
         }
-        var distance = Vector2.Distance(initialPosition,
+        var distance = Vector2.Distance(transform.position,
                             target.position);
         if (distance < RunDistance && haveGround == true)
         {

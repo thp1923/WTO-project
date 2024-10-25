@@ -43,11 +43,11 @@ public class EnemyAttack : MonoBehaviour
         {
             aim.SetTrigger("Attack1");
             aim.SetBool("Run", false);
-            //GetComponent<EnemyMove>().enabled = false;
+            GetComponent<EnemyMove>().enabled = false;
         }
         else 
         {
-            //GetComponent<EnemyMove>().enabled = true;
+            GetComponent<EnemyMove>().enabled = true;
             return;
         }
     }

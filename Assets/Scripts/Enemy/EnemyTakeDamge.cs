@@ -13,6 +13,7 @@ public class EnemyTakeDamge : MonoBehaviour
     Rigidbody2D rig;
 
     public int Def;
+    public int exp;
 
     public GameObject damPopUp;
     public Slider liveSlider;
@@ -46,6 +47,7 @@ public class EnemyTakeDamge : MonoBehaviour
         {
             aim.SetBool("Death", true);
             rig.gravityScale = 0;
+            FindObjectOfType<GameSession>().upExp(exp);
             GetComponent<EnemyMove>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
