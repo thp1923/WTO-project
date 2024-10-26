@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
-    public int playerlivesMax = 1000;
+    public int playerlivesMax;
     public int playerlives;
+    public int staminaMax;
+    public int stamina;
 
     public int BaseDamge;
     public int Def;
@@ -17,6 +19,7 @@ public class GameSession : MonoBehaviour
 
     public Slider liveSlider;
     public Slider expSlider;
+    public Slider staminaSlider;
 
     public GameObject UI;
     public GameObject Board;
@@ -25,14 +28,25 @@ public class GameSession : MonoBehaviour
     public TMPro.TextMeshProUGUI atkUI;
     public TMPro.TextMeshProUGUI defUI;
     public TMPro.TextMeshProUGUI hpUI;
+    public TMPro.TextMeshProUGUI hpHealUI;
+
+    public float timeReturnStamina;
+    float _timeReturnStamina;
+    public int healHP;
+    public int healHPNumber;
     // Start is called before the first frame update
     void Start()
     {
         playerlives = playerlivesMax;
+        stamina = staminaMax;
+
         liveSlider.maxValue = playerlivesMax;
         liveSlider.value = playerlivesMax;
         expSlider.maxValue = expMax;
+        staminaSlider.maxValue = staminaMax;
+        staminaSlider.value = stamina;
         level.text = Level.ToString();
+        hpHealUI.text = healHPNumber.ToString();
     }
     private void Awake()
     {
@@ -49,7 +63,8 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        StaminaReturn();
+        Heal();
     }
     public void PlayerDeath()
     {
@@ -103,5 +118,35 @@ public class GameSession : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+    }
+    public void CostStamina(int cost)
+    {
+        stamina -= cost;
+        staminaSlider.value = stamina;
+    }
+    public void StaminaReturn()
+    {
+        _timeReturnStamina -= Time.deltaTime;
+        if(stamina < staminaMax && _timeReturnStamina <= 0)
+        {
+            stamina += 2;
+            _timeReturnStamina = timeReturnStamina;
+            staminaSlider.value = stamina;
+        }
+    }
+    public void Heal()
+    {
+        if(Input.GetKeyDown(KeyCode.I) && healHPNumber > 0 && playerlives < playerlivesMax)
+        {
+            healHPNumber--;
+            healHP = (int)(playerlivesMax/3);
+            hpHealUI.text = healHPNumber.ToString();
+            playerlives += healHP;
+            liveSlider.value = playerlives;
+        }
+        if(playerlives >= playerlivesMax)
+        {
+            playerlives = playerlivesMax;
+        }
     }
 }

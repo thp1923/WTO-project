@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerAttackUnitl : MonoBehaviour
 {
     public GameObject Until;
+    public int staminaCost;
 
     public float timeCD;
     float _timeCD;
     Animator aim;
+    int stamina;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,13 @@ public class PlayerAttackUnitl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L) && _timeCD <= 0)
+        stamina = FindObjectOfType<GameSession>().stamina;
+        if(Input.GetKeyDown(KeyCode.L) && _timeCD <= 0 && stamina >= staminaCost)
         {
             aim.SetTrigger("Until");
             aim.SetBool("EndUntil", false);
             _timeCD = timeCD;
+            FindObjectOfType<GameSession>().CostStamina(staminaCost);
             
         }
         else

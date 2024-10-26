@@ -8,12 +8,18 @@ public class PlayerTakeDamge : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
 
-    public bool isDeath;
     public GameObject Hit;
-    public int Def;
-
-    public bool NoTakeDamge;
     public GameObject damPopUp;
+    public GameObject enemyStun;
+
+    public int Def;
+    public float stunTime;
+    
+    public bool isDeath;
+    public bool haveParry;
+
+    public float parryCD;
+    float _parryCD;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +31,18 @@ public class PlayerTakeDamge : MonoBehaviour
     void Update()
     {
         Def = FindObjectOfType<GameSession>().Def;
+        Parry();
     }
     public void TakeDamge(int damge, float SkillDamge, float knockBack, float knockBackUp)
     {
-        if (isDeath == false)
+        if(haveParry == true)
+        {
+            FindObjectOfType<EnemyStun>().Stun();
+            CameraShake.Instance.ShakeCamera(5f, 0.1f);
+            enemyStun.SetActive(true);
+            Invoke(nameof(StunEnd), stunTime);
+        }
+        if (isDeath == false && haveParry == false)
         {
             int HPlost = (int)(damge+(SkillDamge/Def)*3);
             Instantiate(Hit, rb.position, transform.rotation);
@@ -50,6 +64,27 @@ public class PlayerTakeDamge : MonoBehaviour
 
                 rb.AddForce(transform.right * -knockBack, ForceMode2D.Impulse);
             }
+        }
+    }
+    public void ParryEnd()
+    {
+        haveParry = false;
+        FindObjectOfType<PlayerMove>().Move();
+    }
+    public void StunEnd()
+    {
+        enemyStun.SetActive(false);
+        FindObjectOfType<EnemyStun>().StunEnd();
+    }
+    void Parry()
+    {
+        _parryCD -= Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.R) && _parryCD <= 0)
+        {
+            animator.SetTrigger("Parry");
+            haveParry = true;
+            _parryCD = parryCD;
+            FindObjectOfType<PlayerMove>().Stop();
         }
     }
     public void FlipTakeDamge(bool flip)

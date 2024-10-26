@@ -20,6 +20,14 @@ public class PlayerMove : MonoBehaviour
     public float dashTime;
     private float _dashTime;
     public bool isDashing;
+    public int cost;
+
+    public bool haveGround;
+
+    public bool isCD;
+    public float dashCD;
+    float _dashCD;
+    int stamina;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,24 +61,35 @@ public class PlayerMove : MonoBehaviour
         Flip();
         Attack();
         Dash();
-
+        stamina = FindObjectOfType<GameSession>().stamina;
     }
     void Dash()
     {
-        if(Input.GetKeyDown(KeyCode.E) && _dashTime <= 0 && isDashing == false && feet.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        _dashCD -= Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.E) && isCD == false && haveGround && stamina >= cost)
         {
             speed += dashBoots;
             _dashTime = dashTime;
+            _dashCD = dashCD;
             isDashing = true;
+            isCD = true;
+            FindObjectOfType<GameSession>().CostStamina(cost);
             GetComponent<PlayerTakeDamge>().enabled = false;
+        }
+
+        if(isCD == true && _dashCD <= 0)
+        {
+            
+            isCD = false;
         }
 
         if (_dashTime <= 0 && isDashing == true)
         {
             speed -= dashBoots;
-            isDashing = false;
+            isDashing = false ;
             GetComponent<PlayerTakeDamge>().enabled = true;
         }
+        
 
         else
         {
@@ -88,12 +107,12 @@ public class PlayerMove : MonoBehaviour
 
         if (feet.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
-            //Jump - false
+            haveGround = true;
             aim.SetBool("Jump", false);
         }
         else
         {
-            //Jump - true
+            haveGround = false;
             aim.SetBool("Jump", true);
         }
     }

@@ -53,4 +53,5 @@ public class EnemyTakeDamge : MonoBehaviour
             GetComponent<CapsuleCollider2D>().enabled = false;
         }
     }
+    
 }
