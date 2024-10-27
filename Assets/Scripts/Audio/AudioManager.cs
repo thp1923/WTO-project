@@ -16,6 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Punch;
     public AudioClip ParryEnemy;
     public AudioClip Jump;
+    public AudioClip Earth;
     // Start is called before the first frame update
     void Start()
     {

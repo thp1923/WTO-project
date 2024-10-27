@@ -37,7 +37,7 @@ public class AttackEarth : MonoBehaviour
     }
     public void Attack()
     {
-        audioManager.playSFX(audioManager.Until);
+        audioManager.playSFX(audioManager.Earth);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {

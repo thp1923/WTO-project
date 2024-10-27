@@ -20,4 +20,8 @@ public class AudioPlayer : MonoBehaviour
     {
         
     }
+    public void DashAudio(float pic)
+    {
+        SFX.pitch = pic;
+    }
 }

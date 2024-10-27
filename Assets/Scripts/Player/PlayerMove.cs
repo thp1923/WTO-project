@@ -83,6 +83,7 @@ public class PlayerMove : MonoBehaviour
             _dashCD = dashCD;
             isDashing = true;
             isCD = true;
+            audioRun.GetComponent<AudioPlayer>().DashAudio(2.5f);
             FindObjectOfType<GameSession>().CostStamina(cost);
             GetComponent<PlayerTakeDamge>().enabled = false;
         }
@@ -97,6 +98,7 @@ public class PlayerMove : MonoBehaviour
         {
             speed -= dashBoots;
             isDashing = false ;
+            audioRun.GetComponent<AudioPlayer>().DashAudio(1.5f);
             GetComponent<PlayerTakeDamge>().enabled = true;
         }
         
