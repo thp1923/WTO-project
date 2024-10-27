@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 603426146}
   - component: {fileID: 603426148}
   m_Layer: 0
-  m_Name: Boss room
+  m_Name: ChangeMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6dfa7549053ac4eb7d5bc91ce5dbc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossfight: {fileID: 8300000, guid: d2ba3d1d95c0c5e489992b51400e2b2c, type: 3}
+  bossfight: {fileID: 8300000, guid: 1c377719f3129fa4dad8e84fe269c5ef, type: 3}
 --- !u!1 &1124932039
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentaudiosource: {fileID: 1332771838}
-  fadeduration: 2
+  fadeduration: 3
   musicSource: {fileID: 1332771838}
   SFXSource: {fileID: 2037274290}
   Background: {fileID: 8300000, guid: c66e1205a2233f9438f94d92a23af131, type: 3}
