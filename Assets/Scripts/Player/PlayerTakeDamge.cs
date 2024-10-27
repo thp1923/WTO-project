@@ -20,6 +20,13 @@ public class PlayerTakeDamge : MonoBehaviour
 
     public float parryCD;
     float _parryCD;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +48,7 @@ public class PlayerTakeDamge : MonoBehaviour
             CameraShake.Instance.ShakeCamera(5f, 0.1f);
             enemyStun.SetActive(true);
             Invoke(nameof(StunEnd), stunTime);
+            
         }
         if (isDeath == false && haveParry == false)
         {
@@ -84,6 +92,7 @@ public class PlayerTakeDamge : MonoBehaviour
             animator.SetTrigger("Parry");
             haveParry = true;
             _parryCD = parryCD;
+            audioManager.playSFX(audioManager.Parry);
             FindObjectOfType<PlayerMove>().Stop();
         }
     }

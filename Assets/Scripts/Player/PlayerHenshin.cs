@@ -6,6 +6,7 @@ public class PlayerHenshin : MonoBehaviour
 {
     public GameObject Flast;
     public int staminaCost;
+    public GameObject Earth;
 
     public float timeCD;
     float _timeCD;
@@ -42,5 +43,9 @@ public class PlayerHenshin : MonoBehaviour
     public void noParry()
     {
         FindObjectOfType<PlayerTakeDamge>().haveParry = false;
+    }
+    public void earthTrue()
+    {
+        Earth.SetActive(true);
     }
 }

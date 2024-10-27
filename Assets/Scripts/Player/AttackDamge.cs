@@ -8,17 +8,20 @@ public class AttackDamge : MonoBehaviour
     public Vector2 AttackRange;
     public Transform AttackPoint;
 
-    public Vector2 AttackRange2;
-    public Transform AttackPoint2;
-
     public LayerMask enemyLayer;
 
     public float DamgeNormal1;
     public float DamgeNormal2;
     public float DamgeNormal3;
-    public float DamgeHenshin;
 
     float Damge;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -45,13 +48,10 @@ public class AttackDamge : MonoBehaviour
         Damge = BaseAttack * DamgeNormal3;
         Attack();
     }
-    public void Henshin()
-    {
-        Damge = BaseAttack * DamgeHenshin;
-        AttackHenshin();
-    }
+    
     public void Attack()
     {
+        audioManager.playSFX(audioManager.Punch);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -60,19 +60,9 @@ public class AttackDamge : MonoBehaviour
 
         }
     }
-    public void AttackHenshin()
-    {
-        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint2.position, AttackRange2, 1, enemyLayer);
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<EnemyTakeDamge>().TakeDamge(BaseAttack, Damge);
-            CameraShake.Instance.ShakeCamera(15f, 0.3f);
-
-        }
-    }
+    
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(AttackPoint.position, AttackRange);
-        Gizmos.DrawWireCube(AttackPoint2.position, AttackRange2);
     }
 }

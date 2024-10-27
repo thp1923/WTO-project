@@ -12,6 +12,13 @@ public class AttackSkill : MonoBehaviour
     public float DamgeSkill;
 
     float Damge;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +37,7 @@ public class AttackSkill : MonoBehaviour
     }
     public void Attack()
     {
+        audioManager.playSFX(audioManager.Until);
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {

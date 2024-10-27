@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -102,7 +102,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07a869ebd9b124e4fab2e6e165775238
-      internalID: -700412040
+      spriteID: 74da0a67a7f1bf543ace96b28b09a934
+      internalID: 1017584078
       vertices: []
       indices: 
       edges: []
@@ -121,9 +121,9 @@ TextureImporter:
       name: SonTinh_1
       rect:
         serializedVersion: 2
-        x: 512
+        x: 208
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ad38ca70cb300347908026352661fac
-      internalID: 1116790571
+      spriteID: 6e256883944983a4892bf9bfbe1fba55
+      internalID: 180588332
       vertices: []
       indices: 
       edges: []
@@ -142,9 +142,9 @@ TextureImporter:
       name: SonTinh_2
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 416
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d45b3fd42ee33549864096f808679cc
-      internalID: 1106849083
+      spriteID: de123e7bfbe6b1e488f18d614262a664
+      internalID: 1571212186
       vertices: []
       indices: 
       edges: []
@@ -163,9 +163,9 @@ TextureImporter:
       name: SonTinh_3
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 624
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3a89ccab732e58428b3267aedc22a25
-      internalID: 891562464
+      spriteID: d95eaf40806df044c9e26b74d592446d
+      internalID: -751575568
       vertices: []
       indices: 
       edges: []
@@ -184,9 +184,9 @@ TextureImporter:
       name: SonTinh_4
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 832
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -195,8 +195,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85dd0e2921c68394eb43597a9ed08047
-      internalID: 880760773
+      spriteID: 24257d8aed9ae7249b020be855673a68
+      internalID: 696256380
       vertices: []
       indices: 
       edges: []
@@ -205,9 +205,9 @@ TextureImporter:
       name: SonTinh_5
       rect:
         serializedVersion: 2
-        x: 2560
+        x: 1040
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15ae0b7997dca3d4992127d682910248
-      internalID: -601194495
+      spriteID: 46403aa11520a0a40aab685d62f47ef2
+      internalID: 253902987
       vertices: []
       indices: 
       edges: []
@@ -226,9 +226,9 @@ TextureImporter:
       name: SonTinh_6
       rect:
         serializedVersion: 2
-        x: 3072
+        x: 1248
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -237,8 +237,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a57523f02ad35fd41a67041826f5ff84
-      internalID: -52119425
+      spriteID: e5595c2a3e7c2cd45beb94c36277f7e1
+      internalID: -1336398878
       vertices: []
       indices: 
       edges: []
@@ -247,9 +247,9 @@ TextureImporter:
       name: SonTinh_7
       rect:
         serializedVersion: 2
-        x: 3584
+        x: 1456
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -258,8 +258,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d774050ccfae2824ca8dcfe74f569c11
-      internalID: 1184384285
+      spriteID: c1d6afabe81adc447994716d9adb0bcb
+      internalID: -22421472
       vertices: []
       indices: 
       edges: []
@@ -268,9 +268,9 @@ TextureImporter:
       name: SonTinh_8
       rect:
         serializedVersion: 2
-        x: 4096
+        x: 1664
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -279,8 +279,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c692986b668e6dd4cbc65577fb924679
-      internalID: 1459476649
+      spriteID: d750a3a065cb36e4c95560359aef9269
+      internalID: -678686726
       vertices: []
       indices: 
       edges: []
@@ -289,9 +289,9 @@ TextureImporter:
       name: SonTinh_9
       rect:
         serializedVersion: 2
-        x: 4608
+        x: 1872
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -300,8 +300,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8887a293bf680b498686e31fa79ab28
-      internalID: 133613872
+      spriteID: 956d40d37b56e554fad283b74170c4fb
+      internalID: 216844533
       vertices: []
       indices: 
       edges: []
@@ -310,9 +310,9 @@ TextureImporter:
       name: SonTinh_10
       rect:
         serializedVersion: 2
-        x: 5120
+        x: 2080
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -321,8 +321,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db373f836a5610b4a996252aff16764d
-      internalID: 621206506
+      spriteID: 97bc72f913e089c498df0079a66bf49b
+      internalID: 1152228931
       vertices: []
       indices: 
       edges: []
@@ -331,9 +331,9 @@ TextureImporter:
       name: SonTinh_11
       rect:
         serializedVersion: 2
-        x: 5632
+        x: 2288
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -342,8 +342,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5e56d4e687546943ac8fbda928328c0
-      internalID: 1757183097
+      spriteID: d6682fe6ee85cb047924a359a64d5aa8
+      internalID: 1225379286
       vertices: []
       indices: 
       edges: []
@@ -352,9 +352,9 @@ TextureImporter:
       name: SonTinh_12
       rect:
         serializedVersion: 2
-        x: 6144
+        x: 2496
         y: 0
-        width: 512
+        width: 208
         height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -363,8 +363,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afdcc02f72071484f821c664bda9093d
-      internalID: -1805690659
+      spriteID: 2d3440b18f2ce3c428b1b01e7b945350
+      internalID: -1665043649
       vertices: []
       indices: 
       edges: []
@@ -380,19 +380,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SonTinh_0: -700412040
-      SonTinh_1: 1116790571
-      SonTinh_10: 621206506
-      SonTinh_11: 1757183097
-      SonTinh_12: -1805690659
-      SonTinh_2: 1106849083
-      SonTinh_3: 891562464
-      SonTinh_4: 880760773
-      SonTinh_5: -601194495
-      SonTinh_6: -52119425
-      SonTinh_7: 1184384285
-      SonTinh_8: 1459476649
-      SonTinh_9: 133613872
+      SonTinh_0: 1017584078
+      SonTinh_1: 180588332
+      SonTinh_10: 1152228931
+      SonTinh_11: 1225379286
+      SonTinh_12: -1665043649
+      SonTinh_2: 1571212186
+      SonTinh_3: -751575568
+      SonTinh_4: 696256380
+      SonTinh_5: 253902987
+      SonTinh_6: -1336398878
+      SonTinh_7: -22421472
+      SonTinh_8: -678686726
+      SonTinh_9: 216844533
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

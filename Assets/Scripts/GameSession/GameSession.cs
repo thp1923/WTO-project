@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
@@ -23,6 +24,8 @@ public class GameSession : MonoBehaviour
 
     public GameObject UI;
     public GameObject Board;
+    public GameObject gameOver;
+    public GameObject Begin;
 
     public TMPro.TextMeshProUGUI level;
     public TMPro.TextMeshProUGUI atkUI;
@@ -32,8 +35,11 @@ public class GameSession : MonoBehaviour
 
     public float timeReturnStamina;
     float _timeReturnStamina;
-    public int healHP;
+    int healHP;
     public int healHPNumber;
+    
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +63,7 @@ public class GameSession : MonoBehaviour
             Destroy(gameObject);
         else
             DontDestroyOnLoad(gameObject); //khong cho huy khi load
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
     }
 
@@ -69,6 +76,23 @@ public class GameSession : MonoBehaviour
     public void PlayerDeath()
     {
         FindObjectOfType<PlayerTakeDamge>().Death();
+        gameOver.SetActive(true);
+    }
+
+    public void PlayAgain()
+    {
+        //lay index cua scene hien tai
+        int currentsceneindex = SceneManager.GetActiveScene().buildIndex;
+        //load lai scene hien tai
+
+        SceneManager.LoadScene(currentsceneindex);
+        Time.timeScale = 1;
+        //Destroy(gameObject); //destroy GameSession luon
+        Begin.SetActive(true);
+        playerlives = playerlivesMax;
+        stamina = staminaMax;
+        liveSlider.value = playerlives;
+        staminaSlider.value = stamina;
     }
 
     //doat mang
@@ -141,6 +165,7 @@ public class GameSession : MonoBehaviour
             healHPNumber--;
             healHP = (int)(playerlivesMax/3);
             hpHealUI.text = healHPNumber.ToString();
+            audioManager.playSFX(audioManager.Heal);
             playerlives += healHP;
             liveSlider.value = playerlives;
         }

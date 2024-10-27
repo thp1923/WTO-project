@@ -28,6 +28,15 @@ public class PlayerMove : MonoBehaviour
     public float dashCD;
     float _dashCD;
     int stamina;
+
+    public GameObject audioRun;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +61,7 @@ public class PlayerMove : MonoBehaviour
         if (value.isPressed)
         {
             rig.velocity += new Vector2(0f, jumpspeed);
+            audioManager.playSFX(audioManager.Jump);
         }
     }
     // Update is called once per frame
@@ -104,11 +114,19 @@ public class PlayerMove : MonoBehaviour
         bool havemove = Mathf.Abs(rig.velocity.x) > Mathf.Epsilon;
         aim.SetBool("Run", havemove);
         aim.SetFloat("Speed", speed);
+        if (havemove && haveGround == true)
+        {
+
+            audioRun.SetActive(true);
+        }
+        else
+            audioRun.SetActive(false);
 
         if (feet.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             haveGround = true;
             aim.SetBool("Jump", false);
+            
         }
         else
         {

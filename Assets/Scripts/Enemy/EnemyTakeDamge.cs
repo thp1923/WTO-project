@@ -17,6 +17,13 @@ public class EnemyTakeDamge : MonoBehaviour
 
     public GameObject damPopUp;
     public Slider liveSlider;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +50,7 @@ public class EnemyTakeDamge : MonoBehaviour
         Animator animator = instance.GetComponentInChildren<Animator>();
         Instantiate(Hit, rig.position, transform.rotation);
         liveSlider.value = HP;
+        audioManager.playSFX(audioManager.Hit);
         if (HP <= 0)
         {
             aim.SetBool("Death", true);

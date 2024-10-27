@@ -6,6 +6,13 @@ using UnityEngine;
 public class EnemyStun : MonoBehaviour
 {
     Animator aim;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +29,7 @@ public class EnemyStun : MonoBehaviour
         aim.SetTrigger("Hit");
         aim.SetBool("Run", false);
         aim.SetBool("Stuned", true);
+        audioManager.playSFX(audioManager.ParryEnemy);
         GetComponent<EnemyAttack>().enabled = false;
         GetComponent<EnemyMove>().enabled = false;
     }
