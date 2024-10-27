@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackUnitl : MonoBehaviour
+public class PlayerHenshin : MonoBehaviour
 {
-    public GameObject Until;
     public GameObject Flast;
     public int staminaCost;
 
@@ -22,29 +21,26 @@ public class PlayerAttackUnitl : MonoBehaviour
     void Update()
     {
         stamina = FindObjectOfType<GameSession>().stamina;
-        if(Input.GetKeyDown(KeyCode.L) && _timeCD <= 0 && stamina >= staminaCost)
+        if (Input.GetKeyDown(KeyCode.T) && _timeCD <= 0 && stamina >= staminaCost)
         {
-            aim.SetTrigger("Until");
-            aim.SetBool("EndUntil", false);
+            aim.SetTrigger("Henshin");
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
-            
+
         }
         else
         {
             _timeCD -= Time.deltaTime;
         }
     }
-    public void UntilSkill()
+    public void haveParry()
     {
-        Until.SetActive(true);
-        GetComponent<PlayerMove>().enabled = false;
+        FindObjectOfType<PlayerTakeDamge>().haveParry = true;
     }
-    public void EndUntil()
+    public void noParry()
     {
-        GetComponent<PlayerMove>().enabled = true;
-        aim.SetBool("EndUntil", true);
+        FindObjectOfType<PlayerTakeDamge>().haveParry = false;
     }
 }
