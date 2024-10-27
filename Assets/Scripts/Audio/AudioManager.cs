@@ -17,6 +17,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip ParryEnemy;
     public AudioClip Jump;
     public AudioClip Earth;
+    public AudioClip HitPlayer;
+    public AudioClip Death;
+    public AudioClip EarthPower;
+    public AudioClip UntilVoice;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +38,16 @@ public class AudioManager : MonoBehaviour
         SFX.clip = sfxClip;
         SFX.PlayOneShot(sfxClip);
     }
+
+    //public void playSFX2(AudioClip sfxClip, AudioClip sfxClip2)
+    //{
+    //    SFX.clip = sfxClip;
+    //    SFX.PlayOneShot(sfxClip);
+    //    int ramdom = Random.Range(1, 10);
+    //    if(ramdom >= 8)
+    //    {
+    //        SFX.clip = sfxClip2;
+    //        SFX.PlayOneShot(sfxClip2);
+    //    }
+    //}
 }

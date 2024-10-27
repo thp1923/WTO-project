@@ -558,7 +558,7 @@ MonoBehaviour:
   Music: {fileID: 614913425}
   SFX: {fileID: 308707619}
   Parry: {fileID: 8300000, guid: 33bbfb07dd4210b4297b8c14befd8bfd, type: 3}
-  Flast: {fileID: 8300000, guid: 9bf9008a87627a549889d27bf633668f, type: 3}
+  Flast: {fileID: 8300000, guid: 5aac3fa33d2faf94fb4736decc63a399, type: 3}
   Until: {fileID: 8300000, guid: 73d3f622f3601874e97ca843da303153, type: 3}
   Heal: {fileID: 8300000, guid: 7f17ab3854a809148bb562b47e552eaf, type: 3}
   Hit: {fileID: 8300000, guid: 3da4dbb1b24688c4e9ec83864bb62c5b, type: 3}
@@ -566,6 +566,10 @@ MonoBehaviour:
   ParryEnemy: {fileID: 8300000, guid: 82d70c4c4d4395747817483e9d7ceef9, type: 3}
   Jump: {fileID: 8300000, guid: a131d580addb340479419b71607dcc4f, type: 3}
   Earth: {fileID: 8300000, guid: 1293e0f14f9164549aefe5f0a69addc0, type: 3}
+  HitPlayer: {fileID: 8300000, guid: 37562787453d42543aa9c1dcf628936d, type: 3}
+  Death: {fileID: 8300000, guid: 00b6afd9b67638447954b843d7608753, type: 3}
+  EarthPower: {fileID: 8300000, guid: 9581760753bb70a44a59fdee4466ca0a, type: 3}
+  UntilVoice: {fileID: 8300000, guid: 52fff11b9d5843c4dacead2119e35509, type: 3}
 --- !u!4 &72292374
 Transform:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ public class PlayerTakeDamge : MonoBehaviour
         }
         if (isDeath == false && haveParry == false)
         {
+            audioManager.playSFX(audioManager.Hit);
             int HPlost = (int)(damge+(SkillDamge/Def)*3);
             Instantiate(Hit, rb.position, transform.rotation);
             FindObjectOfType<GameSession>().TakeLife(HPlost);
@@ -116,6 +117,7 @@ public class PlayerTakeDamge : MonoBehaviour
         isDeath = true;
         rb.angularDrag = 10;
         rb.drag = 10;
+        audioManager.playSFX(audioManager.Death);
         GetComponent<PlayerMove>().enabled = false;
         GetComponent<PlayerAttack>().enabled = false;
     }

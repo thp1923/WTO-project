@@ -12,6 +12,13 @@ public class PlayerHenshin : MonoBehaviour
     float _timeCD;
     Animator aim;
     int stamina;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +35,7 @@ public class PlayerHenshin : MonoBehaviour
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
+            audioManager.playSFX(audioManager.EarthPower);
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
 
         }

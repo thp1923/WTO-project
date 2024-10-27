@@ -12,6 +12,13 @@ public class PlayerAttackUnitl : MonoBehaviour
     float _timeCD;
     Animator aim;
     int stamina;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +36,7 @@ public class PlayerAttackUnitl : MonoBehaviour
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
+            audioManager.playSFX(audioManager.UntilVoice);
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
             
         }
