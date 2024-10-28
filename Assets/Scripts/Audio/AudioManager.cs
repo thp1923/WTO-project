@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +39,7 @@ public class AudioManager : MonoBehaviour
         SFX.clip = sfxClip;
         SFX.PlayOneShot(sfxClip);
     }
+
     //public void playSFX2(AudioClip sfxClip, AudioClip sfxClip2)
     //{
     //    SFX.clip = sfxClip;
