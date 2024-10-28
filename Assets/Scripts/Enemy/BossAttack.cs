@@ -13,7 +13,6 @@ public class BossAttack : MonoBehaviour
     public float AttackRange;
     public Transform AttackPoint;
     public LayerMask playerLayer;
-    public Transform attack;
 
     public float AttackDamge1;
     public float AttackDamge2;
@@ -46,7 +45,7 @@ public class BossAttack : MonoBehaviour
         isFlip = GetComponent<EnemyMove>().isFlip;
         Debug.DrawRay(rig.position, Vector2.right * attackRange, Color.red);
         Debug.DrawRay(rig.position, Vector2.left * attackRange, Color.red);
-        if (Vector2.Distance(attack.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
             aim.SetBool("Run", false);
             NormalAttack();

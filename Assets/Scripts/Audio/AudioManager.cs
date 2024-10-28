@@ -5,7 +5,6 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("--------Audio Source---------")]
-    public AudioSource Music;
     public AudioSource SFX;
     [Header("--------Audio Clip---------")]
     public AudioClip Parry;
@@ -22,6 +21,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip EarthPower;
     public AudioClip UntilVoice;
     public AudioClip Water;
+    public AudioClip KetHop;
     // Start is called before the first frame update
     void Start()
     {

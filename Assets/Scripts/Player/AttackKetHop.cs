@@ -36,7 +36,7 @@ public class AttackKetHop : MonoBehaviour
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
-            audioManager.playSFX(audioManager.EarthPower);
+            audioManager.playSFX(audioManager.KetHop);
             GetComponent<PlayerMove>().Stop();
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
 
