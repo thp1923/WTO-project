@@ -11,13 +11,13 @@ public class BossSound : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         zoneCollider = GetComponent<BoxCollider2D>();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Capsule"))
-        {
-            Debug.Log("Player entered boss zone");
-            audioManager.ChangeMusic(bossfight);
-            zoneCollider.enabled = false;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Capsule"))
+    //    {
+    //        Debug.Log("Player entered boss zone");
+    //        audioManager.ChangeMusic(bossfight);
+    //        zoneCollider.enabled = false;
+    //    }
+    //}
 }
