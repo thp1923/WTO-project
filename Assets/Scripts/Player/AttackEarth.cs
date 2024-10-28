@@ -10,6 +10,8 @@ public class AttackEarth : MonoBehaviour
     public LayerMask enemyLayer;
 
     public float DamgeSkill;
+    public float cameraSize;
+    public float zoomTime;
 
     float Damge;
 
@@ -53,6 +55,9 @@ public class AttackEarth : MonoBehaviour
     }
     public void EndAttack()
     {
+        FindObjectOfType<PlayerAttackUnitl>().EndUntil();
         gameObject.SetActive(false);
     }
+
+
 }

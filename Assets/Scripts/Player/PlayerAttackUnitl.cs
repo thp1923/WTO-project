@@ -48,10 +48,12 @@ public class PlayerAttackUnitl : MonoBehaviour
     public void UntilSkill()
     {
         Until.SetActive(true);
+        GetComponent<PlayerMove>().Stop();
         GetComponent<PlayerMove>().enabled = false;
     }
     public void EndUntil()
     {
+        GetComponent<PlayerMove>().Move();
         GetComponent<PlayerMove>().enabled = true;
         aim.SetBool("EndUntil", true);
     }

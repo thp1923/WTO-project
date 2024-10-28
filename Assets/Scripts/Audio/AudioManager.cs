@@ -21,6 +21,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Death;
     public AudioClip EarthPower;
     public AudioClip UntilVoice;
+    public AudioClip Water;
     // Start is called before the first frame update
     void Start()
     {

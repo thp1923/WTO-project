@@ -56,10 +56,22 @@ public class EnemyTakeDamge : MonoBehaviour
             aim.SetBool("Death", true);
             rig.gravityScale = 0;
             FindObjectOfType<GameSession>().upExp(exp);
+            GetComponent<CapsuleCollider2D>().enabled = false;
             GetComponent<EnemyMove>().enabled = false;
             GetComponent<EnemyAttack>().enabled = false;
-            GetComponent<CapsuleCollider2D>().enabled = false;
         }
     }
-    
+    public void Stun()
+    {
+        aim.SetBool("Stun", true);
+        aim.SetTrigger("Hit");
+        aim.SetBool("Run", false);
+        audioManager.playSFX(audioManager.ParryEnemy);
+
+    }
+    public void StunEnd()
+    {
+        aim.SetBool("Stun", false);
+
+    }
 }

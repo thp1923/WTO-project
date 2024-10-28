@@ -7,6 +7,8 @@ public class EnemyStun : MonoBehaviour
 {
     Animator aim;
 
+    public bool isStun;
+
     AudioManager audioManager;
 
     private void Awake()
@@ -26,17 +28,15 @@ public class EnemyStun : MonoBehaviour
     }
     public void Stun()
     {
+        aim.SetBool("Stun", true);
         aim.SetTrigger("Hit");
         aim.SetBool("Run", false);
-        aim.SetBool("Stuned", true);
         audioManager.playSFX(audioManager.ParryEnemy);
-        GetComponent<EnemyAttack>().enabled = false;
-        GetComponent<EnemyMove>().enabled = false;
+        
     }
     public void StunEnd()
     {
-        aim.SetBool("Stuned", false);
-        GetComponent<EnemyMove>().enabled = true;
-        GetComponent<EnemyAttack>().enabled = true;
+        aim.SetBool("Stun", false);
+        
     }
 }

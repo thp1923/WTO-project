@@ -32,10 +32,12 @@ public class PlayerHenshin : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T) && _timeCD <= 0 && stamina >= staminaCost)
         {
             aim.SetTrigger("Henshin");
+            aim.SetBool("EndUntil", false);
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
             audioManager.playSFX(audioManager.EarthPower);
+            GetComponent<PlayerMove>().Stop();
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
 
         }

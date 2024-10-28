@@ -10,9 +10,8 @@ public class EnemyMove : MonoBehaviour
     public float RunDistance = 30f;
     public float teleTime;
     public bool isTele;
-    public float speed;
     public BoxCollider2D box;
-    private bool isFlip = false;
+    public bool isFlip = false;
     private Vector2 initialPosition;
 
     private float _teleTime;
@@ -84,10 +83,7 @@ public class EnemyMove : MonoBehaviour
             _teleTime -= Time.deltaTime;
         }
     }
-    public void FlipAttack()
-    {
-        FindObjectOfType<PlayerTakeDamge>().FlipTakeDamge(isFlip);
-    }
+    
     
      public void Flip()
     {

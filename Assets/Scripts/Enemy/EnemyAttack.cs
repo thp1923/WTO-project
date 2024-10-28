@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     Animator aim;
     Rigidbody2D rig;
-    public Transform target;
+    Transform target;
 
     public int BaseAttack;
     public Vector2 AttackRange;
@@ -22,6 +22,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackRange;
 
     float Damge;
+    bool isFlip;
     void Start()
     {
         aim = GetComponent<Animator>();
@@ -36,7 +37,8 @@ public class EnemyAttack : MonoBehaviour
         {
             return;
         }
-        
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        isFlip = GetComponent<EnemyMove>().isFlip;
         Debug.DrawRay(rig.position, Vector2.right * attackRange, Color.red);
         Debug.DrawRay(rig.position, Vector2.left * attackRange, Color.red);
         if (Vector2.Distance(transform.position, target.position) < attackRange)
@@ -62,7 +64,7 @@ public class EnemyAttack : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, playerLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
-            FindObjectOfType<EnemyMove>().FlipAttack();
+            FindObjectOfType<PlayerTakeDamge>().FlipTakeDamge(isFlip);
             enemy.GetComponent<PlayerTakeDamge>().TakeDamge(BaseAttack, Damge, knockBack, knockBackUp);
 
 
