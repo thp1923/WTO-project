@@ -504,14 +504,13 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  attack: {fileID: 8258905441989724006}
   AttackDamge1: 2
   AttackDamge2: 4
   knockBack: 5
   knockBackUp: 1
   attackRange: 4
   enegy: 0
-  enegyNeed: 10
+  enegyNeed: 30
 --- !u!114 &6789501047452467413
 MonoBehaviour:
   m_ObjectHideFlags: 0

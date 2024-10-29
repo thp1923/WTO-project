@@ -27,6 +27,10 @@ public class GameSession : MonoBehaviour
     public GameObject gameOver;
     public GameObject Begin;
 
+    public GameObject Skill1;
+    public GameObject Skill2;
+    public GameObject Skill3;
+
     public TMPro.TextMeshProUGUI level;
     public TMPro.TextMeshProUGUI atkUI;
     public TMPro.TextMeshProUGUI defUI;
@@ -37,6 +41,10 @@ public class GameSession : MonoBehaviour
     float _timeReturnStamina;
     int healHP;
     public int healHPNumber;
+    [Header("----------Skill----------")]
+    public bool haveUnitl;
+    public bool haveHenshin;
+    public bool haveKetHop;
     
     AudioManager audioManager;
 
@@ -72,6 +80,22 @@ public class GameSession : MonoBehaviour
     {
         StaminaReturn();
         Heal();
+        showSkill();
+    }
+    public void showSkill()
+    {
+        if (haveUnitl)
+            Skill1.SetActive(true);
+        else
+            Skill1.SetActive(false);
+        if (haveHenshin)
+            Skill2.SetActive(true);
+        else
+            Skill2.SetActive(false);
+        if (haveKetHop)
+            Skill3.SetActive(true);
+        else
+            Skill3.SetActive(false);
     }
     public void PlayerDeath()
     {
@@ -173,5 +197,14 @@ public class GameSession : MonoBehaviour
         {
             playerlives = playerlivesMax;
         }
+    }
+    public void learnSkill(int skillNumber)
+    {
+        if (skillNumber == 1)
+            haveUnitl = true;
+        if (skillNumber == 2)
+            haveHenshin = true;
+        if (skillNumber == 3)
+            haveKetHop = true;
     }
 }

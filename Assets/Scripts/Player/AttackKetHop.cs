@@ -8,10 +8,16 @@ public class AttackKetHop : MonoBehaviour
     public int staminaCost;
     public GameObject KetHop1;
 
+    public GameObject SkillUI;
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+
     public float timeCD;
     float _timeCD;
     Animator aim;
     int stamina;
+
+    bool haveSkill;
 
     AudioManager audioManager;
 
@@ -29,7 +35,18 @@ public class AttackKetHop : MonoBehaviour
     void Update()
     {
         stamina = FindObjectOfType<GameSession>().stamina;
-        if (Input.GetKeyDown(KeyCode.Y) && _timeCD <= 0 && stamina >= staminaCost)
+        haveSkill = FindObjectOfType<GameSession>().haveKetHop;
+        if (!haveSkill) SkillUI.SetActive(false);
+        else SkillUI.SetActive(true);
+        textCD.text = _timeCD.ToString("F1");
+        if (_timeCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
+        Attack();
+    }
+    void Attack()
+    {
+        if (haveSkill == false) return;
+        if (Input.GetKeyDown(KeyCode.P) && _timeCD <= 0 && stamina >= staminaCost)
         {
             aim.SetTrigger("KetHop");
             aim.SetBool("EndUntil", false);
