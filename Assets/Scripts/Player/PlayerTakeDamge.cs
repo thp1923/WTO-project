@@ -21,6 +21,9 @@ public class PlayerTakeDamge : MonoBehaviour
     public float parryCD;
     float _parryCD;
 
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+
     AudioManager audioManager;
 
     private void Awake()
@@ -39,6 +42,9 @@ public class PlayerTakeDamge : MonoBehaviour
     {
         Def = FindObjectOfType<GameSession>().Def;
         Parry();
+        textCD.text = _parryCD.ToString("F1");
+        if (_parryCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
     }
     public void TakeDamge(int damge, float SkillDamge, float knockBack, float knockBackUp)
     {

@@ -17,6 +17,7 @@ public class GameSession : MonoBehaviour
     public int Level;
     public int exp;
     public int expMax;
+    public int canHealNumber;
 
     public Slider liveSlider;
     public Slider expSlider;
@@ -118,7 +119,12 @@ public class GameSession : MonoBehaviour
         liveSlider.value = playerlives;
         staminaSlider.value = stamina;
     }
+    public void ResetGameSession()
+    {
+        SceneManager.LoadScene(0);//load lai Scene 0
+        Time.timeScale = 1;
 
+    }
     //doat mang
     public void TakeLife(int damgeEnemy)
     {
@@ -135,6 +141,13 @@ public class GameSession : MonoBehaviour
     {
         exp += expUp;
         expSlider.value = exp;
+        canHealNumber++;
+        if (canHealNumber >= 5)
+        {
+            healHPNumber++;
+            canHealNumber -= 5;
+            hpHealUI.text = healHPNumber.ToString();
+        }
         if(exp >= expMax)
         {
             exp -= expMax;
@@ -206,5 +219,13 @@ public class GameSession : MonoBehaviour
             haveHenshin = true;
         if (skillNumber == 3)
             haveKetHop = true;
+    }
+    public void True()
+    {
+        UI.SetActive(true);
+    }
+    public void False()
+    {
+        UI.SetActive(false);
     }
 }
