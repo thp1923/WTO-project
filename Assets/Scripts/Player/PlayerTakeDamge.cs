@@ -25,6 +25,9 @@ public class PlayerTakeDamge : MonoBehaviour
     public TMPro.TextMeshProUGUI textCD;
 
     AudioManager audioManager;
+    bool haveUI;
+    public GameObject UI;
+
 
     private void Awake()
     {
@@ -40,6 +43,10 @@ public class PlayerTakeDamge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
+        if (haveUI) 
+            UI.SetActive(true);
+        else UI.SetActive(false);
         Def = FindObjectOfType<GameSession>().Def;
         Parry();
         textCD.text = _parryCD.ToString("F1");

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HaveLive : MonoBehaviour
+public class HaveLive2 : MonoBehaviour
 {
     bool haveSkill;
     // Start is called before the first frame update
@@ -14,8 +14,8 @@ public class HaveLive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        haveSkill = FindObjectOfType<GameSession>().haveHenshin;
-        if (haveSkill) 
+        haveSkill = FindObjectOfType<GameSession>().haveMangNgoc2;
+        if (haveSkill)
             Destroy(gameObject);
     }
 }

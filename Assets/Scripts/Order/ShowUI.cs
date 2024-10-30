@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LearnSkill : MonoBehaviour
+public class ShowUI : MonoBehaviour
 {
-    public int skillNumber;
+    public GameObject UI;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +16,12 @@ public class LearnSkill : MonoBehaviour
     {
         
     }
-    public void Skill()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindObjectOfType<GameSession>().learnSkill(skillNumber);
-        FindObjectOfType<GameSession>().Resume();
-        Destroy(gameObject);
+        if (collision.CompareTag("Player"))
+        {
+            UI.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class AttackKetHop : MonoBehaviour
     int stamina;
 
     bool haveSkill;
+    bool haveUI;
 
     AudioManager audioManager;
 
@@ -34,10 +35,15 @@ public class AttackKetHop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
         stamina = FindObjectOfType<GameSession>().stamina;
         haveSkill = FindObjectOfType<GameSession>().haveKetHop;
         if (!haveSkill) SkillUI.SetActive(false);
-        else SkillUI.SetActive(true);
+        else
+        {
+            if (haveUI) SkillUI.SetActive(true);
+            else SkillUI.SetActive(false);
+        }
         textCD.text = _timeCD.ToString("F1");
         if (_timeCD <= 0) round.SetActive(false);
         else round.SetActive(true);

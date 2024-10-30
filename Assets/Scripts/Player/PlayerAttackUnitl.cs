@@ -20,6 +20,7 @@ public class PlayerAttackUnitl : MonoBehaviour
 
     AudioManager audioManager;
     bool haveSkill;
+    bool haveUI;
 
     private void Awake()
     {
@@ -34,10 +35,15 @@ public class PlayerAttackUnitl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
         haveSkill = FindObjectOfType<GameSession>().haveUnitl;
         stamina = FindObjectOfType<GameSession>().stamina;
         if (!haveSkill) SkillUI.SetActive(false);
-        else SkillUI.SetActive(true);
+        else
+        {
+            if(haveUI) SkillUI.SetActive(true);
+            else SkillUI.SetActive(false);
+        }
         textCD.text = _timeCD.ToString("F1");
         if(_timeCD <= 0) round.SetActive(false);
         else round.SetActive(true);

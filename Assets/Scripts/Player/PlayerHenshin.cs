@@ -18,6 +18,8 @@ public class PlayerHenshin : MonoBehaviour
     int stamina;
 
     bool haveSkill;
+    bool haveUI;
+    public GameObject UI;
 
     AudioManager audioManager;
 
@@ -34,10 +36,15 @@ public class PlayerHenshin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
         stamina = FindObjectOfType<GameSession>().stamina;
         haveSkill = FindObjectOfType<GameSession>().haveHenshin;
-        if(!haveSkill) SkillUI.SetActive(false);
-        else SkillUI.SetActive(true);
+        if (!haveSkill) SkillUI.SetActive(false);
+        else
+        {
+            if(haveUI) SkillUI.SetActive(true);
+            else SkillUI.SetActive(false);
+        }
         textCD.text = _timeCD.ToString("F1");
         if (_timeCD <= 0) round.SetActive(false);
         else round.SetActive(true);

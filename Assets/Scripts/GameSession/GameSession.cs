@@ -25,6 +25,7 @@ public class GameSession : MonoBehaviour
 
     public GameObject UI;
     public GameObject Board;
+    public bool haveUI;
     public GameObject gameOver;
     public GameObject Begin;
 
@@ -46,12 +47,20 @@ public class GameSession : MonoBehaviour
     public bool haveUnitl;
     public bool haveHenshin;
     public bool haveKetHop;
-    
+
+    public bool canKetHop;
+    public bool haveMangNgoc2;
+    public GameObject canKetHopSkill;
+    public GameObject mangNgoc1;
+    public GameObject mangNgoc2;
+
+
     AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        haveUI = true;
         playerlives = playerlivesMax;
         stamina = staminaMax;
 
@@ -90,13 +99,32 @@ public class GameSession : MonoBehaviour
         else
             Skill1.SetActive(false);
         if (haveHenshin)
+        {
+            mangNgoc1.SetActive(true);
             Skill2.SetActive(true);
+        }
         else
+        {
+            mangNgoc1.SetActive(false);
             Skill2.SetActive(false);
+        }
         if (haveKetHop)
+        {
+            canKetHopSkill.SetActive(false);
             Skill3.SetActive(true);
+        }
         else
+        {
             Skill3.SetActive(false);
+        }
+        if (haveMangNgoc2)
+            mangNgoc2.SetActive(true);
+        else
+            mangNgoc2.SetActive(false);
+        if (haveHenshin && haveMangNgoc2)
+            canKetHop = true;
+        if (canKetHop)
+            canKetHopSkill.SetActive(true);
     }
     public void PlayerDeath()
     {
@@ -170,6 +198,7 @@ public class GameSession : MonoBehaviour
         atkUI.text = BaseDamge.ToString();
         defUI.text = Def.ToString();
         hpUI.text = playerlivesMax.ToString();
+        haveUI = false;
         StopGame();
     }
     public void StopGame()
@@ -178,6 +207,7 @@ public class GameSession : MonoBehaviour
     }
     public void Resume()
     {
+        haveUI = true;
         Time.timeScale = 1;
     }
     public void CostStamina(int cost)

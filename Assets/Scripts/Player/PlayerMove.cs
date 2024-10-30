@@ -36,6 +36,8 @@ public class PlayerMove : MonoBehaviour
     public GameObject dashEffect;
 
     AudioManager audioManager;
+    bool haveUI;
+    public GameObject UI;
 
     private void Awake()
     {
@@ -71,6 +73,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
+        if (haveUI)
+            UI.SetActive(true);
+        else UI.SetActive(false);
         textCD.text = _dashCD.ToString("F1");
         if (_dashCD <= 0) round.SetActive(false);
         else round.SetActive(true);
