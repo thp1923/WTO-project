@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     [Header("--------Audio Source---------")]
     public AudioSource SFX;
+    [SerializeField] AudioSource SFXSource;
     [Header("--------Audio Clip---------")]
     public AudioClip Parry;
     public AudioClip Flast;
@@ -22,6 +24,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip UntilVoice;
     public AudioClip Water;
     public AudioClip KetHop;
+    [Header("-------- Audio Clip Speak -------------")]
+    public AudioClip[] speak;
+    private int index;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,4 +56,14 @@ public class AudioManager : MonoBehaviour
     //        SFX.PlayOneShot(sfxClip2);
     //    }
     //}
+
+    public void PlaySFXNPC(AudioClip[] clip)
+    {
+        if (index >= 0 && index < clip.Length)
+        {
+            SFXSource.PlayOneShot(clip[index]);
+            index++;
+            Debug.Log("Có chạy " + index);
+        }
+    }
 }

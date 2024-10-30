@@ -41,6 +41,7 @@ public class NPC : MonoBehaviour
             else
             {
                 Panel.SetActive(true);
+                audioManager.PlaySFXNPC(audioManager.speak);
                 StartCoroutine(Typing());
             }
             nextTime = Time.time + timeNext;
@@ -82,7 +83,7 @@ public class NPC : MonoBehaviour
         {
             index++;
             dialogueText.text = "";
-            
+            audioManager.PlaySFXNPC(audioManager.speak);
             StartCoroutine(Typing());
         }
         else

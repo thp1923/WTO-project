@@ -288,7 +288,8 @@ MonoBehaviour:
   - "C\u1EADu nh\xF3c, t\xF4i c\xF3 m\u1ED9t th\u1EE9 mu\u1ED1n \u0111\u01B0a cho
     c\u1EADu."
   - "Ch\xEDnh l\xE0 m\u1EA3nh linh h\u1ED3n c\u1EE7a ta."
-  - "H\xE3y gi\u1EEF l\u1EA5y v\xEC ta s\u1EBD s\u1EDBm tan bi\u1EBFn"
+  - "H\xE3y gi\u1EEF l\u1EA5y v\xEC ta s\u1EBD s\u1EDBm tan bi\u1EBFn. N\xF3 ch\u1EAFc
+    ch\u1EAFn s\u1EBD gi\xFAp \xEDch cho c\u1EADu"
   indexLearn: 2
   timeNext: 2
   nextButton: {fileID: 5619436514834202093}
