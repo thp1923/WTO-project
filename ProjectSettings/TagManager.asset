@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2980703843
+    locked: 0
   - name: Ground
     uniqueID: 3724630087
     locked: 0
@@ -54,4 +57,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 444149947
+    locked: 0
+  - name: Transition
+    uniqueID: 481030581
+    locked: 0
+  - name: UI
+    uniqueID: 1475396053
     locked: 0
