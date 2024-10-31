@@ -61,13 +61,13 @@ public class EnemyMove : MonoBehaviour
             _teleTime = teleTime;
             aim.SetBool("Run", true);
             isTele = false;
-            GetComponent<EnemyTakeDamge>().enabled = true;
+            GetComponent<EnemyTakeDamge>().NoDamge = false;
         }
         else
         {
             isTele = true;
             aim.SetBool("Run", false);
-            GetComponent<EnemyTakeDamge>().enabled = false;
+            GetComponent<EnemyTakeDamge>().NoDamge = true;
             Tele();
         }
     }

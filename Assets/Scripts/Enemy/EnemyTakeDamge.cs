@@ -14,6 +14,7 @@ public class EnemyTakeDamge : MonoBehaviour
 
     public int Def;
     public int exp;
+    public bool NoDamge;
 
     public GameObject damPopUp;
     public Slider liveSlider;
@@ -41,6 +42,7 @@ public class EnemyTakeDamge : MonoBehaviour
     }
     public void TakeDamge(int Base, float SkillDamge)
     {
+        if (NoDamge) return;
         int HPlost = (int)(Base +(SkillDamge/Def)*3);
         HP -= HPlost;
         aim.SetTrigger("Hit");
@@ -63,6 +65,7 @@ public class EnemyTakeDamge : MonoBehaviour
     }
     public void Stun()
     {
+        if (NoDamge) return;
         aim.SetBool("Stun", true);
         aim.SetTrigger("Hit");
         aim.SetBool("Run", false);

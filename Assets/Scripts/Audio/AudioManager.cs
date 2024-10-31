@@ -28,6 +28,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] speak;
     private int index;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //so luong doi tuong GameSession
+        int numbersession = FindObjectsOfType<AudioManager>().Length;
+        //neu no co nhieu hon phien ban thi se huy no
+        if (numbersession > 1)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject); //khong cho huy khi load
+    }
     void Start()
     {
         

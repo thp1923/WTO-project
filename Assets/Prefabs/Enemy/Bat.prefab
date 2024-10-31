@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunDistance: 25
-  teleTime: 0
+  teleTime: 3
   isTele: 0
   box: {fileID: 7658643124757696848}
   isFlip: 0
