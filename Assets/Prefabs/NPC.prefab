@@ -285,11 +285,14 @@ MonoBehaviour:
   Panel: {fileID: 2682990241917597683}
   dialogueText: {fileID: 7012261225700634469}
   dialogue:
-  - "C\u1EADu nh\xF3c, t\xF4i c\xF3 m\u1ED9t th\u1EE9 mu\u1ED1n \u0111\u01B0a cho
-    c\u1EADu."
-  - "Ch\xEDnh l\xE0 m\u1EA3nh linh h\u1ED3n c\u1EE7a ta."
-  - "H\xE3y gi\u1EEF l\u1EA5y v\xEC ta s\u1EBD s\u1EDBm tan bi\u1EBFn. N\xF3 ch\u1EAFc
-    ch\u1EAFn s\u1EBD gi\xFAp \xEDch cho c\u1EADu"
+  - "\u0110\xFAng l\xE0 kh\xF4ng ng\u1EDD ta c\xF3 th\u1EC3 g\u1EB7p \u0111\u01B0\u1EE3c
+    con ng\u01B0\u1EDDi \u1EDF \u0111\xE2y."
+  - "N\u1EBFu c\u1EADu mu\u1ED1n tho\xE1t kh\u1ECFi \u0111\xE2u th\xEC h\xE3y h\u1EE3p
+    t\xE1c v\u1EDBi ta."
+  - "Ta s\u1EBD trao cho c\u1EADu linh h\u1ED3n c\u1EE7a ta, \u0111\u1ED5i l\u1EA1i
+    c\u1EADu ph\u1EA3i gi\xFAp ta \u0111\xE1nh b\u1EA1i h\u1EAFn. C\u1EADu kh\xF4ng
+    c\xF3 quy\u1EC1n t\u1EEB ch\u1ED1i th\u1ECFa thu\u1EADn n\xE0y, h\xE3y nh\u1EADn
+    l\u1EA5y s\u1EE9c m\u1EA1nh c\u1EE7a ta."
   indexLearn: 2
   timeNext: 2
   nextButton: {fileID: 5619436514834202093}
@@ -371,14 +374,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 0.84313726}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1021181714, guid: 8be29038d80ccf34b86caad749830521, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
