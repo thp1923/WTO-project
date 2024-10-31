@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [Header("--------Audio Source---------")]
-    public AudioSource Music;
     public AudioSource SFX;
+    [SerializeField] AudioSource SFXSource;
     [Header("--------Audio Clip---------")]
     public AudioClip Parry;
     public AudioClip Flast;
@@ -22,7 +23,21 @@ public class AudioManager : MonoBehaviour
     public AudioClip EarthPower;
     public AudioClip UntilVoice;
     public AudioClip Water;
+    public AudioClip KetHop;
+    [Header("-------- Audio Clip Speak -------------")]
+    public AudioClip[] speak;
+    private int index;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        //so luong doi tuong GameSession
+        int numbersession = FindObjectsOfType<AudioManager>().Length;
+        //neu no co nhieu hon phien ban thi se huy no
+        if (numbersession > 1)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject); //khong cho huy khi load
+    }
     void Start()
     {
         
@@ -51,4 +66,14 @@ public class AudioManager : MonoBehaviour
     //        SFX.PlayOneShot(sfxClip2);
     //    }
     //}
+
+    public void PlaySFXNPC(AudioClip[] clip)
+    {
+        if (index >= 0 && index < clip.Length)
+        {
+            SFXSource.PlayOneShot(clip[index]);
+            index++;
+            Debug.Log("Có chạy " + index);
+        }
+    }
 }

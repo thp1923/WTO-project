@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttackUnitl : MonoBehaviour
 {
@@ -8,12 +9,18 @@ public class PlayerAttackUnitl : MonoBehaviour
     public GameObject Flast;
     public int staminaCost;
 
+    public GameObject SkillUI;
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+
     public float timeCD;
     float _timeCD;
     Animator aim;
     int stamina;
 
     AudioManager audioManager;
+    bool haveSkill;
+    bool haveUI;
 
     private void Awake()
     {
@@ -28,8 +35,25 @@ public class PlayerAttackUnitl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
+        haveSkill = FindObjectOfType<GameSession>().haveUnitl;
         stamina = FindObjectOfType<GameSession>().stamina;
-        if(Input.GetKeyDown(KeyCode.L) && _timeCD <= 0 && stamina >= staminaCost)
+        if (!haveSkill) SkillUI.SetActive(false);
+        else
+        {
+            if(haveUI) SkillUI.SetActive(true);
+            else SkillUI.SetActive(false);
+        }
+        textCD.text = _timeCD.ToString("F1");
+        if(_timeCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
+        Attack();
+        
+    }
+    void Attack()
+    {
+        if (haveSkill == false) return;
+        if (Input.GetKeyDown(KeyCode.K) && _timeCD <= 0 && stamina >= staminaCost)
         {
             aim.SetTrigger("Until");
             aim.SetBool("EndUntil", false);
@@ -38,7 +62,7 @@ public class PlayerAttackUnitl : MonoBehaviour
             Time.timeScale = 0;
             audioManager.playSFX(audioManager.UntilVoice);
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
-            
+
         }
         else
         {

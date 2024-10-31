@@ -31,7 +31,13 @@ public class PlayerMove : MonoBehaviour
 
     public GameObject audioRun;
 
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+    public GameObject dashEffect;
+
     AudioManager audioManager;
+    bool haveUI;
+    public GameObject UI;
 
     private void Awake()
     {
@@ -67,6 +73,13 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
+        if (haveUI)
+            UI.SetActive(true);
+        else UI.SetActive(false);
+        textCD.text = _dashCD.ToString("F1");
+        if (_dashCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
         Run();
         Flip();
         Attack();
@@ -83,9 +96,10 @@ public class PlayerMove : MonoBehaviour
             _dashCD = dashCD;
             isDashing = true;
             isCD = true;
+            dashEffect.SetActive(true);
             audioRun.GetComponent<AudioPlayer>().DashAudio(2.5f);
             FindObjectOfType<GameSession>().CostStamina(cost);
-            GetComponent<PlayerTakeDamge>().enabled = false;
+            GetComponent<PlayerTakeDamge>().haveParry = true;
         }
 
         if(isCD == true && _dashCD <= 0)
@@ -98,8 +112,9 @@ public class PlayerMove : MonoBehaviour
         {
             speed -= dashBoots;
             isDashing = false ;
+            dashEffect.SetActive(false);
             audioRun.GetComponent<AudioPlayer>().DashAudio(1.5f);
-            GetComponent<PlayerTakeDamge>().enabled = true;
+            GetComponent<PlayerTakeDamge>().haveParry = false;
         }
         
 

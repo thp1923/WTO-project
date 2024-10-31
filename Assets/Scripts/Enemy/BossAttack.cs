@@ -13,7 +13,6 @@ public class BossAttack : MonoBehaviour
     public float AttackRange;
     public Transform AttackPoint;
     public LayerMask playerLayer;
-    public Transform attack;
 
     public float AttackDamge1;
     public float AttackDamge2;
@@ -28,6 +27,15 @@ public class BossAttack : MonoBehaviour
 
     float Damge;
     bool isFlip;
+
+    bool haveParry;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         aim = GetComponent<Animator>();
@@ -38,6 +46,7 @@ public class BossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveParry = FindObjectOfType<PlayerTakeDamge>().haveParry;
         if (FindObjectOfType<PlayerTakeDamge>().isDeath == true)
         {
             return;
@@ -46,7 +55,7 @@ public class BossAttack : MonoBehaviour
         isFlip = GetComponent<EnemyMove>().isFlip;
         Debug.DrawRay(rig.position, Vector2.right * attackRange, Color.red);
         Debug.DrawRay(rig.position, Vector2.left * attackRange, Color.red);
-        if (Vector2.Distance(attack.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
             aim.SetBool("Run", false);
             NormalAttack();
@@ -88,11 +97,31 @@ public class BossAttack : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackPoint.position, AttackRange, playerLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
+            if (haveParry)
+            {
+                CameraShake.Instance.ShakeCamera(5f, 0.1f);
+                Stun();
+                return;
+            }
             FindObjectOfType<PlayerTakeDamge>().FlipTakeDamge(isFlip);
             enemy.GetComponent<PlayerTakeDamge>().TakeDamge(BaseAttack, Damge, knockBack, knockBackUp);
 
-
         }
+    }
+
+    public void Stun()
+    {
+        aim.SetBool("Stun", true);
+        aim.SetTrigger("Hit");
+        aim.SetBool("Run", false);
+        audioManager.playSFX(audioManager.ParryEnemy);
+        Invoke(nameof(StunEnd), 2);
+
+    }
+    public void StunEnd()
+    {
+        aim.SetBool("Stun", false);
+
     }
     void OnDrawGizmosSelected()
     {

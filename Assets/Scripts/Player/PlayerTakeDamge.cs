@@ -21,7 +21,13 @@ public class PlayerTakeDamge : MonoBehaviour
     public float parryCD;
     float _parryCD;
 
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+
     AudioManager audioManager;
+    bool haveUI;
+    public GameObject UI;
+
 
     private void Awake()
     {
@@ -37,14 +43,20 @@ public class PlayerTakeDamge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
+        if (haveUI) 
+            UI.SetActive(true);
+        else UI.SetActive(false);
         Def = FindObjectOfType<GameSession>().Def;
         Parry();
+        textCD.text = _parryCD.ToString("F1");
+        if (_parryCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
     }
     public void TakeDamge(int damge, float SkillDamge, float knockBack, float knockBackUp)
     {
         if(haveParry == true)
         {
-            FindObjectOfType<EnemyTakeDamge>().Stun();
             CameraShake.Instance.ShakeCamera(5f, 0.1f);
             enemyStun.SetActive(true);
             Invoke(nameof(StunEnd), stunTime);
@@ -83,7 +95,6 @@ public class PlayerTakeDamge : MonoBehaviour
     public void StunEnd()
     {
         enemyStun.SetActive(false);
-        FindObjectOfType<EnemyTakeDamge>().StunEnd();
     }
     void Parry()
     {

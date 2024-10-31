@@ -61,7 +61,6 @@ public class EnemyMove : MonoBehaviour
             _teleTime = teleTime;
             aim.SetBool("Run", true);
             isTele = false;
-            
         }
         else
         {

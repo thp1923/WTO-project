@@ -8,10 +8,17 @@ public class AttackKetHop : MonoBehaviour
     public int staminaCost;
     public GameObject KetHop1;
 
+    public GameObject SkillUI;
+    public GameObject round;
+    public TMPro.TextMeshProUGUI textCD;
+
     public float timeCD;
     float _timeCD;
     Animator aim;
     int stamina;
+
+    bool haveSkill;
+    bool haveUI;
 
     AudioManager audioManager;
 
@@ -28,15 +35,31 @@ public class AttackKetHop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveUI = FindObjectOfType<GameSession>().haveUI;
         stamina = FindObjectOfType<GameSession>().stamina;
-        if (Input.GetKeyDown(KeyCode.Y) && _timeCD <= 0 && stamina >= staminaCost)
+        haveSkill = FindObjectOfType<GameSession>().haveKetHop;
+        if (!haveSkill) SkillUI.SetActive(false);
+        else
+        {
+            if (haveUI) SkillUI.SetActive(true);
+            else SkillUI.SetActive(false);
+        }
+        textCD.text = _timeCD.ToString("F1");
+        if (_timeCD <= 0) round.SetActive(false);
+        else round.SetActive(true);
+        Attack();
+    }
+    void Attack()
+    {
+        if (haveSkill == false) return;
+        if (Input.GetKeyDown(KeyCode.P) && _timeCD <= 0 && stamina >= staminaCost)
         {
             aim.SetTrigger("KetHop");
             aim.SetBool("EndUntil", false);
             _timeCD = timeCD;
             Flast.SetActive(true);
             Time.timeScale = 0;
-            audioManager.playSFX(audioManager.EarthPower);
+            audioManager.playSFX(audioManager.KetHop);
             GetComponent<PlayerMove>().Stop();
             FindObjectOfType<GameSession>().CostStamina(staminaCost);
 

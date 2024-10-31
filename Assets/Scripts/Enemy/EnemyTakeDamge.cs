@@ -61,17 +61,5 @@ public class EnemyTakeDamge : MonoBehaviour
             GetComponent<EnemyAttack>().enabled = false;
         }
     }
-    public void Stun()
-    {
-        aim.SetBool("Stun", true);
-        aim.SetTrigger("Hit");
-        aim.SetBool("Run", false);
-        audioManager.playSFX(audioManager.ParryEnemy);
-
-    }
-    public void StunEnd()
-    {
-        aim.SetBool("Stun", false);
-
-    }
+    
 }

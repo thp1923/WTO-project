@@ -17,6 +17,7 @@ public class GameSession : MonoBehaviour
     public int Level;
     public int exp;
     public int expMax;
+    public int canHealNumber;
 
     public Slider liveSlider;
     public Slider expSlider;
@@ -24,8 +25,13 @@ public class GameSession : MonoBehaviour
 
     public GameObject UI;
     public GameObject Board;
+    public bool haveUI;
     public GameObject gameOver;
     public GameObject Begin;
+
+    public GameObject Skill1;
+    public GameObject Skill2;
+    public GameObject Skill3;
 
     public TMPro.TextMeshProUGUI level;
     public TMPro.TextMeshProUGUI atkUI;
@@ -37,12 +43,24 @@ public class GameSession : MonoBehaviour
     float _timeReturnStamina;
     int healHP;
     public int healHPNumber;
-    
+    [Header("----------Skill----------")]
+    public bool haveUnitl;
+    public bool haveHenshin;
+    public bool haveKetHop;
+
+    public bool canKetHop;
+    public bool haveMangNgoc2;
+    public GameObject canKetHopSkill;
+    public GameObject mangNgoc1;
+    public GameObject mangNgoc2;
+
+
     AudioManager audioManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        haveUI = true;
         playerlives = playerlivesMax;
         stamina = staminaMax;
 
@@ -72,6 +90,41 @@ public class GameSession : MonoBehaviour
     {
         StaminaReturn();
         Heal();
+        showSkill();
+    }
+    public void showSkill()
+    {
+        if (haveUnitl)
+            Skill1.SetActive(true);
+        else
+            Skill1.SetActive(false);
+        if (haveHenshin)
+        {
+            mangNgoc1.SetActive(true);
+            Skill2.SetActive(true);
+        }
+        else
+        {
+            mangNgoc1.SetActive(false);
+            Skill2.SetActive(false);
+        }
+        if (haveKetHop)
+        {
+            canKetHopSkill.SetActive(false);
+            Skill3.SetActive(true);
+        }
+        else
+        {
+            Skill3.SetActive(false);
+        }
+        if (haveMangNgoc2)
+            mangNgoc2.SetActive(true);
+        else
+            mangNgoc2.SetActive(false);
+        if (haveHenshin && haveMangNgoc2)
+            canKetHop = true;
+        if (canKetHop)
+            canKetHopSkill.SetActive(true);
     }
     public void PlayerDeath()
     {
@@ -94,7 +147,12 @@ public class GameSession : MonoBehaviour
         liveSlider.value = playerlives;
         staminaSlider.value = stamina;
     }
+    public void ResetGameSession()
+    {
+        SceneManager.LoadScene(0);//load lai Scene 0
+        Time.timeScale = 1;
 
+    }
     //doat mang
     public void TakeLife(int damgeEnemy)
     {
@@ -111,6 +169,13 @@ public class GameSession : MonoBehaviour
     {
         exp += expUp;
         expSlider.value = exp;
+        canHealNumber++;
+        if (canHealNumber >= 5)
+        {
+            healHPNumber++;
+            canHealNumber -= 5;
+            hpHealUI.text = healHPNumber.ToString();
+        }
         if(exp >= expMax)
         {
             exp -= expMax;
@@ -133,6 +198,7 @@ public class GameSession : MonoBehaviour
         atkUI.text = BaseDamge.ToString();
         defUI.text = Def.ToString();
         hpUI.text = playerlivesMax.ToString();
+        haveUI = false;
         StopGame();
     }
     public void StopGame()
@@ -141,6 +207,7 @@ public class GameSession : MonoBehaviour
     }
     public void Resume()
     {
+        haveUI = true;
         Time.timeScale = 1;
     }
     public void CostStamina(int cost)
@@ -173,5 +240,22 @@ public class GameSession : MonoBehaviour
         {
             playerlives = playerlivesMax;
         }
+    }
+    public void learnSkill(int skillNumber)
+    {
+        if (skillNumber == 1)
+            haveUnitl = true;
+        if (skillNumber == 2)
+            haveHenshin = true;
+        if (skillNumber == 3)
+            haveKetHop = true;
+    }
+    public void True()
+    {
+        UI.SetActive(true);
+    }
+    public void False()
+    {
+        UI.SetActive(false);
     }
 }

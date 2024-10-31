@@ -498,20 +498,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5713689865741512765, guid: f081e99b0b7045546a0da36f7150a70f, type: 3}
-  BaseAttack: 40
+  BaseAttack: 120
   AttackRange: 3.64
   AttackPoint: {fileID: 6638703510422082001}
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  attack: {fileID: 8258905441989724006}
   AttackDamge1: 2
   AttackDamge2: 4
   knockBack: 5
   knockBackUp: 1
   attackRange: 4
   enegy: 0
-  enegyNeed: 10
+  enegyNeed: 30
 --- !u!114 &6789501047452467413
 MonoBehaviour:
   m_ObjectHideFlags: 0
