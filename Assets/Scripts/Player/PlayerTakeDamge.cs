@@ -57,7 +57,6 @@ public class PlayerTakeDamge : MonoBehaviour
     {
         if(haveParry == true)
         {
-            FindObjectOfType<EnemyTakeDamge>().Stun();
             CameraShake.Instance.ShakeCamera(5f, 0.1f);
             enemyStun.SetActive(true);
             Invoke(nameof(StunEnd), stunTime);
@@ -96,7 +95,6 @@ public class PlayerTakeDamge : MonoBehaviour
     public void StunEnd()
     {
         enemyStun.SetActive(false);
-        FindObjectOfType<EnemyTakeDamge>().StunEnd();
     }
     void Parry()
     {

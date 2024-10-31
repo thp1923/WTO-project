@@ -23,6 +23,15 @@ public class EnemyAttack : MonoBehaviour
 
     float Damge;
     bool isFlip;
+
+    bool haveParry;
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         aim = GetComponent<Animator>();
@@ -33,6 +42,7 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        haveParry = FindObjectOfType<PlayerTakeDamge>().haveParry;
         if(FindObjectOfType<PlayerTakeDamge>().isDeath == true)
         {
             return;
@@ -64,11 +74,29 @@ public class EnemyAttack : MonoBehaviour
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(AttackPoint.position, AttackRange, 1, playerLayer);
         foreach (Collider2D enemy in hitEnemies)
         {
+            if (haveParry)
+            {
+                CameraShake.Instance.ShakeCamera(5f, 0.1f);
+                Stun();
+                return;
+            }
             FindObjectOfType<PlayerTakeDamge>().FlipTakeDamge(isFlip);
             enemy.GetComponent<PlayerTakeDamge>().TakeDamge(BaseAttack, Damge, knockBack, knockBackUp);
-
-
         }
+    }
+    public void Stun()
+    {
+        aim.SetBool("Stun", true);
+        aim.SetTrigger("Hit");
+        aim.SetBool("Run", false);
+        audioManager.playSFX(audioManager.ParryEnemy);
+        Invoke(nameof(StunEnd), 2);
+
+    }
+    public void StunEnd()
+    {
+        aim.SetBool("Stun", false);
+
     }
     void OnDrawGizmosSelected()
     {
