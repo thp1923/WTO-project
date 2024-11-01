@@ -2481,7 +2481,7 @@ MonoBehaviour:
   stunTime: 2
   isDeath: 0
   haveParry: 0
-  parryCD: 4
+  parryCD: 3.5
   round: {fileID: 1717358561959482519}
   textCD: {fileID: 616076852664027335}
   UI: {fileID: 2765848936039255632}
@@ -2514,7 +2514,7 @@ MonoBehaviour:
   - {x: 0.60944057, y: -2.237184, z: 0}
   m_ShapePathHash: -1487184325
   m_Mesh: {fileID: 0}
-  m_InstanceId: -2652
+  m_InstanceId: 48392
   m_LocalBounds:
     m_Center: {x: -0.0075315237, y: -0.399323, z: 0}
     m_Extent: {x: 0.6169721, y: 1.8378611, z: 0}
