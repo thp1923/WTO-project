@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
@@ -19,7 +20,7 @@ public class HealthManager : MonoBehaviour
     {
         if (fillHealthAmount <= 0)
         {
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if (Input.GetKeyDown(KeyCode.A))

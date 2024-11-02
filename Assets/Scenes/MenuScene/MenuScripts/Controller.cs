@@ -9,13 +9,18 @@ public class Controller : MonoBehaviour
     public Button quitButton;
     public Text pressAnyKeyText;
     public PlayableDirector timeline;
-    private bool isWaitingForInput = true;
+    private bool isWaitingForInput = false;
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(EnableAnyKey(4.5f));
     }
-
+    IEnumerator EnableAnyKey(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isWaitingForInput = true;
+        pressAnyKeyText.enabled = true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +40,7 @@ public class Controller : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(1);
     }
     public void QuitGame()
     {
