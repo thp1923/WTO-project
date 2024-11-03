@@ -1697,7 +1697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerlivesMax: 1323
   playerlives: 0
-  staminaMax: 100
+  staminaMax: 150
   stamina: 0
   BaseDamge: 92
   Def: 47
@@ -4360,7 +4360,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Di chuy\u1EC3n b\u1EB1ng ph\xEDm \tv\xE0 \t.\nNh\u1EA3y b\u1EB1ng ph\xEDm\t\t.\nH\u1ED3i
-    m\xE1u d\xF9ng ph\xEDm\t\t.\n\u0110\u1EDF d\xF2n d\xF9ng ph\xEDm \t\t.\nT\u0103ng
+    m\xE1u d\xF9ng ph\xEDm\t\t.\n\u0110\u1EDF \u0111\xF2n d\xF9ng ph\xEDm \t\t.\nT\u0103ng
     t\u1ED1c d\xF9ng ph\xEDm \t.\nT\u1EA5n c\xF4ng th\u01B0\u1EDDng \t\t.\nChi\xEAu
     1 \t. Chi\xEAu 2 \t. Chi\xEAu 3 \t."
   m_isRightToLeft: 0

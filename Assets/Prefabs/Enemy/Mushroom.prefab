@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcbf5063aa3efa149af7c74fc7cf79bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RunDistance: 30
+  RunDistance: 10
   teleTime: 4
   isTele: 0
   box: {fileID: 4534404076548978531}

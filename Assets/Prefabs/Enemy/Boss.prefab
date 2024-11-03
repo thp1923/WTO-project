@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1064029651394433777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.91, y: -1.04, z: 0}
+  m_LocalPosition: {x: 2.94, y: -1.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 5713689865741512765, guid: f081e99b0b7045546a0da36f7150a70f, type: 3}
   BaseAttack: 120
-  AttackRange: 3.64
+  AttackRange: 3.04
   AttackPoint: {fileID: 6638703510422082001}
   playerLayer:
     serializedVersion: 2
@@ -569,7 +569,7 @@ RectTransform:
   m_GameObject: {fileID: 6775574313428938209}
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: -4.025, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6994288484509822049}
@@ -577,7 +577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.12, y: 1.56}
+  m_AnchoredPosition: {x: -0.12, y: 3.42}
   m_SizeDelta: {x: 2.1125, y: 0.3834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4403697529285062581
