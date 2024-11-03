@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class IdelBehaviour : StateMachineBehaviour
 {
+    PlayerMove playerMove;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        FindObjectOfType<PlayerMove>().Move();
-
+        playerMove = animator.GetComponent<PlayerMove>();
+        if (playerMove != null)
+        {
+            playerMove.Move();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (PlayerAttack.Instance.inputRecceived)
+        if (PlayerAttack.Instance != null && PlayerAttack.Instance.inputRecceived)
         {
             animator.SetTrigger("Attack1");
             PlayerAttack.Instance.InputManager();

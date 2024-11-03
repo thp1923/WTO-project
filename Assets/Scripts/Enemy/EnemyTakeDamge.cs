@@ -76,7 +76,6 @@ public class EnemyTakeDamge : MonoBehaviour
             GetComponent<EnemyMove>().enabled = false;
 
             EnemyAttack enemyAttack = GetComponent<EnemyAttack>();
-            SceneManager.LoadScene(2);
             if (enemyAttack != null)
             {
                 enemyAttack.enabled = false;
