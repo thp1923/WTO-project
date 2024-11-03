@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(EnableAnyKey(4.5f));
+        StartCoroutine(EnableAnyKey(9.5f));
     }
     IEnumerator EnableAnyKey(float delay)
     {
