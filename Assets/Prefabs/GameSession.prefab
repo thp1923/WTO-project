@@ -1697,7 +1697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerlivesMax: 1323
   playerlives: 0
-  staminaMax: 100
+  staminaMax: 150
   stamina: 0
   BaseDamge: 92
   Def: 47

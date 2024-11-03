@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         CheckRun();
-        
+        Flip();
         Debug.DrawRay(transform.position, Vector2.right * RunDistance, Color.green);
         Debug.DrawRay(transform.position, Vector2.left * RunDistance, Color.green);
         if (!box.IsTouchingLayers(LayerMask.GetMask("Ground")))

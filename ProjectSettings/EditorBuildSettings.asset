@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cutscene/BossCutScene.unity
-    guid: b2ed83acd7f5ec34d9fbd81ea987fcbd
-  - enabled: 1
-    path: Assets/Scenes/Cutscene/BossRoomTesting.unity
-    guid: 7495504631011164aa93e7c01f155aed
+    path: Assets/Scenes/Map.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
