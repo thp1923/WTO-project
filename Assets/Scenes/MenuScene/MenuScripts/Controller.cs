@@ -35,7 +35,7 @@ public class Controller : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        FindObjectOfType<GameSession>().NextScene();
     }
     public void QuitGame()
     {
