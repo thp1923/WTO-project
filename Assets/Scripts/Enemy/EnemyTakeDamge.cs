@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EnemyTakeDamge : MonoBehaviour
@@ -22,17 +23,32 @@ public class EnemyTakeDamge : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        GameObject audioObject = GameObject.FindGameObjectWithTag("Audio");
+        if (audioObject != null)
+        {
+            audioManager = audioObject.GetComponent<AudioManager>();
+        }
+        else
+        {
+            Debug.LogError("AudioManager object with tag 'Audio' not found!");
+        }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         HP = maxHp;
         aim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
+        if (aim == null) Debug.LogError("Animator component missing!");
+        if (rig == null) Debug.LogError("Rigidbody2D component missing!");
+        if (liveSlider == null) Debug.LogError("Slider not assigned in the Inspector!");
+        if (damPopUp == null) Debug.LogError("damPopUp prefab not assigned!");
+        if (Hit == null) Debug.LogError("Hit prefab not assigned!");
+
         liveSlider.maxValue = maxHp;
         liveSlider.value = maxHp;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -58,8 +74,17 @@ public class EnemyTakeDamge : MonoBehaviour
             FindObjectOfType<GameSession>().upExp(exp);
             GetComponent<CapsuleCollider2D>().enabled = false;
             GetComponent<EnemyMove>().enabled = false;
-            GetComponent<EnemyAttack>().enabled = false;
+
+            EnemyAttack enemyAttack = GetComponent<EnemyAttack>();
+            if (enemyAttack != null)
+            {
+                enemyAttack.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("EnemyAttack component not found on this object.");
+            }
+
         }
     }
-    
 }

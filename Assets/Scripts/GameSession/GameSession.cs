@@ -160,7 +160,7 @@ public class GameSession : MonoBehaviour
     }
     public void ResetGameSession()
     {
-        SceneManager.LoadScene(0);//load lai Scene 0
+        SceneManager.LoadScene(1);//load lai Scene 1
         Time.timeScale = 1;
 
     }

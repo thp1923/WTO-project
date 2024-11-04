@@ -14,6 +14,8 @@ public class BossAttack : MonoBehaviour
     public Transform AttackPoint;
     public LayerMask playerLayer;
 
+    public AudioSource audioObject;
+
     public float AttackDamge1;
     public float AttackDamge2;
 
@@ -34,7 +36,19 @@ public class BossAttack : MonoBehaviour
 
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        if (audioObject != null)
+        {
+            audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+            if (audioManager == null)
+            {
+                Debug.LogError("AudioManager component not found on the object with tag 'Audio'.");
+            }
+        }
+        else
+        {
+            Debug.LogError("No object with tag 'Audio' found in the scene.");
+        }
     }
     void Start()
     {
