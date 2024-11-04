@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class ExitGamePrompt : MonoBehaviour
 {
-    public TextMeshProUGUI exitMessage; // Tham chiếu đến UI Text cho thông báo
+    public TextMeshProUGUI exitMessage;// Tham chiếu đến UI Text cho thông báo
+    public GameObject quitImage;
     private bool isExiting = false;
 
     private void Start()
     {
         exitMessage.gameObject.SetActive(false);
+        quitImage.SetActive(false);
     }
     void Update()
     {
         // Kiểm tra nếu nhấn phím Esc và chưa trong trạng thái thoát
         if (Input.GetKeyDown(KeyCode.Escape) && !isExiting)
         {
+            Time.timeScale = 0f;
             StartCoroutine(ExitGameRoutine()); // Bắt đầu Coroutine để thoát game
         }
     }
@@ -23,6 +26,7 @@ public class ExitGamePrompt : MonoBehaviour
     IEnumerator ExitGameRoutine()
     {
         isExiting = true;
+        quitImage.SetActive(true);
         exitMessage.gameObject.SetActive(true); // Hiện thông báo thoát
 
         yield return new WaitForSeconds(3f); // Đợi 3 giây
