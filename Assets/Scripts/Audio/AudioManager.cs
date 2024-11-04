@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip Jump;
     public AudioClip Earth;
     public AudioClip HitPlayer;
+    public AudioClip ElevatorOpen;
     public AudioClip Death;
     public AudioClip EarthPower;
     public AudioClip UntilVoice;

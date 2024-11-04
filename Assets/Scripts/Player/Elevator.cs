@@ -7,7 +7,7 @@ public class Elevator : MonoBehaviour
     public Transform targetLocation;
     public float teleportDelay = 0.25f;
     public Animator elevatorAnimator;
-
+    AudioManager audioManager;
     private bool isOpen;
     private bool isMoving;
     private bool isTeleporting;
@@ -22,6 +22,11 @@ public class Elevator : MonoBehaviour
     {
         
     }
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -29,6 +34,7 @@ public class Elevator : MonoBehaviour
            if (!isOpen)
             {
                 OpenElevator();
+                
             }
         }
     }
@@ -36,6 +42,7 @@ public class Elevator : MonoBehaviour
     {
         isOpen = true;
         elevatorAnimator.SetBool("Open", true);
+        audioManager.playSFX(audioManager.ElevatorOpen);
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
