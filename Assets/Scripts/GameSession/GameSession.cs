@@ -147,9 +147,20 @@ public class GameSession : MonoBehaviour
         liveSlider.value = playerlives;
         staminaSlider.value = stamina;
     }
+    public void NextScene()
+    {
+        //lay index cua scene hien tai
+        int currentsceneindex = SceneManager.GetActiveScene().buildIndex;
+        //load lai scene hien tai
+
+        SceneManager.LoadScene(currentsceneindex + 1);
+        Time.timeScale = 1;
+        //Destroy(gameObject); //destroy GameSession luon
+        Begin.SetActive(true);
+    }
     public void ResetGameSession()
     {
-        SceneManager.LoadScene(0);//load lai Scene 0
+        SceneManager.LoadScene(1);//load lai Scene 1
         Time.timeScale = 1;
 
     }

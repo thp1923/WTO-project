@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Remove : MonoBehaviour
 {
+    public GameObject nextScene;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +19,9 @@ public class Remove : MonoBehaviour
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+    public void showNextScene()
+    {
+        nextScene.SetActive(true);
     }
 }
