@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip UntilVoice;
     public AudioClip Water;
     public AudioClip KetHop;
+    public AudioClip Robot;
     [Header("-------- Audio Clip Speak -------------")]
     public AudioClip[] speak;
     private int index;
