@@ -18,7 +18,6 @@ public class ExitGamePrompt : MonoBehaviour
         // Kiểm tra nếu nhấn phím Esc và chưa trong trạng thái thoát
         if (Input.GetKeyDown(KeyCode.Escape) && !isExiting)
         {
-            Time.timeScale = 0f;
             StartCoroutine(ExitGameRoutine()); // Bắt đầu Coroutine để thoát game
         }
     }
@@ -30,7 +29,7 @@ public class ExitGamePrompt : MonoBehaviour
         exitMessage.gameObject.SetActive(true); // Hiện thông báo thoát
 
         yield return new WaitForSeconds(3f); // Đợi 3 giây
-
+        Debug.Log("Thoát game hoàn tất");
         Application.Quit(); // Thoát game (không hoạt động trong chế độ Editor)
 
 #if UNITY_EDITOR
