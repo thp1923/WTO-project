@@ -24,7 +24,7 @@ public class SignPostNotification : MonoBehaviour
         float distance = Vector3.Distance(player.position, transform.position);
 
         // Nếu người chơi trong khoảng cách cho phép, hiện thông báo
-        if (distance <= triggerDistance)
+        if (distance < triggerDistance)
         {
             instructionText.gameObject.SetActive(true);
             postNotificationimage.SetActive(true);
