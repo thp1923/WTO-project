@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SignPostNotification : MonoBehaviour
 {
-    public TextMeshProUGUI instructionText;// Tham chiếu đến UI Text
+    public Text instructionText;// Tham chiếu đến UI Text
     public GameObject postNotificationimage;
     public Transform player;     // Tham chiếu đến đối tượng Player
     public float triggerDistance = 3f; // Khoảng cách để hiện thông báo
