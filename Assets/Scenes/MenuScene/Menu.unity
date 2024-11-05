@@ -624,7 +624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start adventure
+  m_text: Start game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6504683c289c85f46ae160c9a889d51f, type: 2}
   m_sharedMaterial: {fileID: -3898444087487149470, guid: 6504683c289c85f46ae160c9a889d51f, type: 2}
@@ -1444,7 +1444,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: End adventure
+  m_text: Quit game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6504683c289c85f46ae160c9a889d51f, type: 2}
   m_sharedMaterial: {fileID: -3898444087487149470, guid: 6504683c289c85f46ae160c9a889d51f, type: 2}
